@@ -14,6 +14,7 @@
     ./telescope.nix
     ./treesitter.nix
     ./vimtex.nix # inria
+    ./lazygit.nix
   ];
 
   programs.nixvim = {
