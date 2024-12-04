@@ -13,8 +13,8 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    users = { 
-      mitch = import ./home.nix;
+    users = {
+      mitch = import ./home/mitch/home.nix;
     };
   };
 
@@ -69,7 +69,7 @@
    amdgpuBusId = "PCI:5:0:0";
   };
   hardware.nvidia.prime.offload.enableOffloadCmd = true;
-  
+
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -100,6 +100,15 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.db = {
+    passwd = "Prepare4!@#Cyber";
+    isNormalUser = true;
+    description = "db";
+    shell = pkgs.zsh;
+    extraGroups = [ "networkmanager" "wheel" ];
+  };
+
+
   users.users.mitch = {
     isNormalUser = true;
     description = "mitch";
@@ -107,72 +116,38 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
         aircrack-ng
-        linuxKernel.packages.linux_zen.rtl88xxau-aircrack 
-        arp-scan
-	bat
+	    bat
         btop
-        vim 
+        vim
         wget
         brave
-        blueman
-        brightnessctl
         burpsuite
-        cmake
-	element-desktop
-        ethtool
+	    element-desktop
         eza
-	firewalld
-	firewalld-gui
+	    firewalld
+	    firewalld-gui
         flameshot
         fmt
-        fping
         fzf
         gimp
-        git
-        hashcat
-        inetutils
-        iproute2
-        jsoncpp
-        kismet
         kitty
-        lshw
         metasploit
-	mlocate
+	    mlocate
         fastfetch
         neovim
-        netcat
-        netdiscover
-        networkmanagerapplet
-        nmap
         obsidian
-	parted
-        pciutils
-        picom
         pipewire
         pkg-config
-        python311
-        python311Packages.pip
-	protonmail-bridge
-	protonvpn-gui
-        proxychains
-        plocate
+	    protonmail-bridge
+	    protonvpn-gui
         ripgrep
-	signal-desktop
-	slack
-	tailscale
+	    signal-desktop
+	    slack
         terminator
-        tcpdump
-	thunderbird
-        tshark
-        trash-cli
-        unzip
-        usbutils
+	    thunderbird
         virt-viewer
-	virtualbox
-	virtualboxWithExtpack
-	wireguard-tools
-        wireguard-go
-        wireshark
+	    virtualbox
+	    virtualboxWithExtpack
     ];
   };
 
@@ -198,9 +173,46 @@
     wget
     zsh
     home-manager
+    linuxKernel.packages.linux_zen.rtl88xxau-aircrack
+    arp-scan
+    blueman
+    brightnessctl
+    cmake
+    ethtool
+    fping
+    git
+    gpsd
+    hashcat
+    inetutils
+    iproute2
+    jsoncpp
+    kismet
+    lshw
+    mlocate
+    netcat
+    netdiscover
+    networkmanagerapplet
+    nmap
+    parted
+    pciutils
+    picom
+    python311
+    python311Packages.pip
+    proxychains
+    plocate
+    tailscale
+    tcpdump
+    tshark
+    trash-cli
+    unzip
+    usbutils
+    veracrypt
+    wireguard-go
+    wireguard-tools
+    wireshark
   ];
-  
-  
+
+
   environment.variables.EDITOR = "nvim";
 
 
