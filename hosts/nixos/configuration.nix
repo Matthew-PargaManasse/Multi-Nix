@@ -14,9 +14,9 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      mitch = import ./home/mitch/home.nix;
-      db = import ./home/db/home.nix;
-      user = import ./home/user/home.nix;
+      mitch = import ../../home/mitch/home.nix;
+      db = import ../../home/db/home.nix;
+      user = import ../../home/user/home.nix;
    };
   };
 
@@ -103,8 +103,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.user = {
-    passwd = "$y$j9T$/q5K2TMRftdHuI1d1jW2N.$2/QmDWEmulkgjjiJ6Ec.Yr7OmYQuo5VbVYgnMWEB3J3
-";
+    initialHashedPassword = "$y$j9T$/q5K2TMRftdHuI1d1jW2N.$2/QmDWEmulkgjjiJ6Ec.Yr7OmYQuo5VbVYgnMWEB3J3";
     isNormalUser = true;
     description = "user";
     shell = pkgs.zsh;
@@ -113,8 +112,7 @@
 
 
   users.users.db = {
-    passwd = "$y$j9T$/q5K2TMRftdHuI1d1jW2N.$2/QmDWEmulkgjjiJ6Ec.Yr7OmYQuo5VbVYgnMWEB3J3
-";
+    initialHashedPassword = "$y$j9T$/q5K2TMRftdHuI1d1jW2N.$2/QmDWEmulkgjjiJ6Ec.Yr7OmYQuo5VbVYgnMWEB3J3";
     isNormalUser = true;
     description = "db";
     shell = pkgs.zsh;
@@ -191,7 +189,7 @@
   ];
 
 
-  environment.variables.EDITOR = "nvim";
+  environment.variables.EDITOR = "vim";
 
 
   fonts.packages = with pkgs; [

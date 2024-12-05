@@ -6,8 +6,8 @@
     ./brave.nix
   ];
 
-  home.username = "db";
-  home.homeDirectory = "/home/db";
+  home.username = "user";
+  home.homeDirectory = "/home/user";
 
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
@@ -58,7 +58,6 @@
   home.sessionVariables = {
      EDITOR = "vim";
   };
-
 
 
   nixpkgs.config.allowUnfree = true;

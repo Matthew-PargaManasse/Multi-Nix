@@ -10,8 +10,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    plugin-onedark.url = "github:navarasu/onedark.nvim";
-    plugin-onedark.flake = false;
+        #    plugin-onedark.url = "github:navarasu/onedark.nvim";
+        #    plugin-onedark.flake = false;
 
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -40,7 +40,7 @@
         nixos = nixpkgs.lib.nixosSystem {
             specialArgs = { inherit inputs system; };
             modules = [
-                ./hosts/nixos.nix
+                ./hosts/nixos/configuration.nix
             ];
         };
     };

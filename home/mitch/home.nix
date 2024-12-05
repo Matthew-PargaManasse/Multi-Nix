@@ -22,8 +22,6 @@
     burpsuite
     element-desktop
     eza
-    firewalld
-    firewalld-gui
     flameshot
     fmt
     fzf
@@ -63,6 +61,8 @@
      GTK_THEME = "Tokyonight-Dark-B";
   };
 
+
+  nixpkgs.config.allowUnfree = true;
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
