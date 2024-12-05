@@ -7,8 +7,8 @@
     ./brave.nix
   ];
 
-  home.username = "mitch";
-  home.homeDirectory = "/home/mitch";
+  home.username = "db";
+  home.homeDirectory = "/home/db";
 
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
@@ -66,14 +66,14 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.git = {
-    enable = true;
-    userName = "Matthew-PargaManasse";
-    userEmail = "LithoBreakerGB@gmail.com";
-    extraConfig = {
-      init.defaultBranch = "main";
-      safe.directory = "/etc/nixos";
-    };
-  };
+    #  programs.git = {
+    #    enable = true;
+    #    userName = "Matthew-PargaManasse";
+    #    userEmail = "LithoBreakerGB@gmail.com";
+    #    extraConfig = {
+    #      init.defaultBranch = "main";
+    #      safe.directory = "/etc/nixos";
+    #    };
+    #  };
 
 }
