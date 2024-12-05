@@ -15,7 +15,9 @@
     extraSpecialArgs = { inherit inputs; };
     users = {
       mitch = import ./home/mitch/home.nix;
-    };
+      db = import ./home/db/home.nix;
+      user = import ./home/user/home.nix;
+   };
   };
 
   # Bootloader.
@@ -125,41 +127,6 @@
     description = "mitch";
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-        aircrack-ng
-	    bat
-        btop
-        vim
-        wget
-        brave
-        burpsuite
-	    element-desktop
-        eza
-	    firewalld
-	    firewalld-gui
-        flameshot
-        fmt
-        fzf
-        gimp
-        kitty
-        metasploit
-	    mlocate
-        fastfetch
-        neovim
-        obsidian
-        pipewire
-        pkg-config
-	    protonmail-bridge
-	    protonvpn-gui
-        ripgrep
-	    signal-desktop
-	    slack
-        terminator
-	    thunderbird
-        virt-viewer
-	    virtualbox
-	    virtualboxWithExtpack
-    ];
   };
 
   # Emable ZSH
