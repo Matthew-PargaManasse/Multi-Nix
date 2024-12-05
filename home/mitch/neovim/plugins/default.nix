@@ -10,15 +10,13 @@
     ./neorg.nix
     ./neo-tree.nix
     ./startify.nix
-    ./tagbar.nix
     ./telescope.nix
     ./treesitter.nix
     ./vimtex.nix # inria
   ];
 
   programs.nixvim = {
-    colorschemes.tokyonight.enable = true;
-    colorschemes.tokyonight.settings.style = "night";
+    colorschemes.gruvbox.enable = true;
 
     plugins = {
       web-devicons.enable = true;

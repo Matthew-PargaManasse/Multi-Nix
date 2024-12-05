@@ -50,7 +50,9 @@
         inherit pkgs;
 
       modules = [
+        ./home/db/home.nix
         ./home/mitch/home.nix
+        ./home/user/home.nix
         ];
       extraSpecialArgs = { inherit inputs; };
     };
