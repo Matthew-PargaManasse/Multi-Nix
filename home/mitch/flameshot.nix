@@ -8,14 +8,15 @@
         drawFontSize = 23;
         drawThickness = 3;
 
-        savePath = "/home/gaetan/downloads";
+        savePath = "/home/mitch/downloads";
         savePathFixed = false;
 
-        disabledTrayIcon = true;
-        showDesktopNotification = false;
-        showHelp = false;
+                #   disabledTrayIcon = true;
+                #   showDesktopNotification = false;
+                #   showHelp = false;
 
         uiColor = "#ffffff";
+
       };
     };
   };

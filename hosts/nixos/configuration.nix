@@ -154,29 +154,28 @@
     blueman
     brightnessctl
     cmake
-    ethtool
-    fping
-    git
-    gpsd
-    hashcat
-    inetutils
-    iproute2
-    jsoncpp
-    kismet
+    file
+    gcc
+    killall
     lshw
+    man
     mlocate
     netcat
     netdiscover
     networkmanagerapplet
     nmap
+    openvpn
     parted
     pciutils
+    php
     picom
     python311
     python311Packages.pip
     proxychains
     plocate
+    remmina
     tailscale
+    tmux
     tcpdump
     tshark
     trash-cli

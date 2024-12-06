@@ -18,23 +18,16 @@
     vim
     wget
     brave
-    burpsuite
-    element-desktop
     eza
     flameshot
     fmt
     fzf
     gimp
     kitty
-    metasploit
     mlocate
-    fastfetch
-    neovim
     obsidian
     pipewire
     pkg-config
-    protonmail-bridge
-    protonvpn-gui
     ripgrep
     signal-desktop
     slack
@@ -43,10 +36,6 @@
     virt-viewer
     virtualbox
     virtualboxWithExtpack
-    font-awesome
-    font-awesome_4
-    font-awesome_5
-    tokyonight-gtk-theme
     haskellPackages.font-awesome-type
     gnome-tweaks
     gparted
