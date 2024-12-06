@@ -31,7 +31,6 @@
     metasploit
     mlocate
     fastfetch
-    neovim
     obsidian
     pipewire
     pkg-config
