@@ -6,7 +6,7 @@
     enableAutosuggestions = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
-    initExtra = "source ~/.p10k.zsh"; #new
+#    initExtra = "source ~/.p10k.zsh"; #new
 
     shellAliases = {
       ls = "eza --icons";
@@ -19,18 +19,13 @@
       path = "${config.xdg.dataHome}/zsh/history";
     };
     
-    plugins = [
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
+#    plugins = [
 #      {
-#        name = "powerlevel10k-config";
-#        src = ./p10k-config;
-#        file = "p10k.zsh";
+#        name = "powerlevel10k";
+#        src = pkgs.zsh-powerlevel10k;
+#        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
 #      }
-    ];
+#   ];
 
     zplug = {
       enable = true;

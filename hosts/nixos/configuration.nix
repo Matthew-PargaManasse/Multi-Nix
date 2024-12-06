@@ -156,6 +156,7 @@
     cmake
     file
     gcc
+    git
     killall
     lshw
     man
