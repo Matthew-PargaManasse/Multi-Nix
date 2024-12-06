@@ -5,7 +5,6 @@
     ./neovim
     ./theme.nix
     ./brave.nix
-    ./flameshot.nix
   ];
 
   home.username = "mitch";

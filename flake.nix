@@ -46,16 +46,32 @@
     };
 
     homeConfigurations = {
-      mitch = home-manager.lib.homeManagerConfiguration {
+      user = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
       modules = [
-        ./home/db/home.nix
-        ./home/mitch/home.nix
         ./home/user/home.nix
         ];
       extraSpecialArgs = { inherit inputs; };
     };
+      mitch = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+      modules = [
+        ./home/mitch/home.nix
+        ];
+      extraSpecialArgs = { inherit inputs; };
+    };
+      db = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+      modules = [
+        ./home/db/home.nix
+        ];
+      extraSpecialArgs = { inherit inputs; };
+    };
+
+
 
   };
 };
