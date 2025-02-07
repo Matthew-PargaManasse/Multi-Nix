@@ -16,6 +16,7 @@
     aircrack-ng
     bat
     btop
+    unetbootin
     vim
     wget
     brave
