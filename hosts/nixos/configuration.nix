@@ -15,8 +15,6 @@
     extraSpecialArgs = { inherit inputs; };
     users = {
       mitch = import ../../home/mitch/home.nix;
-      db = import ../../home/db/home.nix;
-      user = import ../../home/user/home.nix;
    };
   };
 
@@ -102,29 +100,21 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.user = {
-    initialHashedPassword = "$y$j9T$/q5K2TMRftdHuI1d1jW2N.$2/QmDWEmulkgjjiJ6Ec.Yr7OmYQuo5VbVYgnMWEB3J3";
-    isNormalUser = true;
-    description = "user";
-    shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
-  };
-
-
-  users.users.db = {
-    initialHashedPassword = "$y$j9T$/q5K2TMRftdHuI1d1jW2N.$2/QmDWEmulkgjjiJ6Ec.Yr7OmYQuo5VbVYgnMWEB3J3";
-    isNormalUser = true;
-    description = "db";
-    shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
-  };
-
 
   users.users.mitch = {
     isNormalUser = true;
     description = "mitch";
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
+  };
+
+  # Enable hyprland
+  programs.hyprland = {
+    enable = true;
+    # set the flake package
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # make sure to also set the portal package, so that they are in sync
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
   # Emable ZSH
@@ -142,6 +132,12 @@
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Enable Cachix to cache Hyprland packages and dependencies
+  nix.settings = {
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -157,6 +153,7 @@
     file
     gcc
     git
+    kitty
     killall
     lshw
     man

@@ -4,7 +4,7 @@
   inputs = {
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
+    hyprland.url = "github:hyprwm/Hyprland";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,28 +45,19 @@
         };
     };
 
-    homeConfigurations = {
-      user = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-      modules = [
-        ./home/user/home.nix
-        ];
-      extraSpecialArgs = { inherit inputs; };
-    };
       mitch = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
       modules = [
         ./home/mitch/home.nix
-        ];
-      extraSpecialArgs = { inherit inputs; };
-    };
-      db = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-      modules = [
-        ./home/db/home.nix
+        {
+          wayland.windowManager.hyprland = {
+            enable = true;
+            # set the flake package
+            package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+            portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+          };
+        }
         ];
       extraSpecialArgs = { inherit inputs; };
     };
@@ -74,5 +65,4 @@
 
 
   };
-};
 }
