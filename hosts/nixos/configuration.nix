@@ -129,6 +129,20 @@
   # Enable Tailscale
   services.tailscale.enable = true;
 
+  #enable automatic generational garbage collection
+  nix.gc = {
+        automatic = true;
+        interval = "weekly";
+        #dates = "03:15"; #time to collect garbage
+        options = "-delete-older-than 30d"; # Delete generations over 30 days old
+    };
+
+  #Run Optimiszation on nix store
+  nix.optimise = {
+        automatic = true;
+        #dates = [ "03:45" ]; #Optional
+    }
+
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -219,6 +233,21 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+
+  #Enabling Auto Upgrade. May affect stability?
+  system.autoUpgrade = {
+        enable = true;
+        flake = inputs.self.outPath;
+        flags = [
+            "--update-input"
+            "nixpkgs"
+            "-L"
+
+        ];
+        dates = "02:00";
+        randomizedDelaySec = "45min";
+    };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
