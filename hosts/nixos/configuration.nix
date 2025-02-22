@@ -132,8 +132,7 @@
   #enable automatic generational garbage collection
   nix.gc = {
         automatic = true;
-        interval = "weekly";
-        #dates = "03:15"; #time to collect garbage
+        dates = "03:15"; #time to collect garbage
         options = "-delete-older-than 30d"; # Delete generations over 30 days old
     };
 
@@ -141,7 +140,7 @@
   nix.optimise = {
         automatic = true;
         #dates = [ "03:45" ]; #Optional
-    }
+    };
 
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
