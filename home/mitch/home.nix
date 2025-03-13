@@ -21,6 +21,7 @@
     wget
     brave
     burpsuite
+    dolphin
     element-desktop
     eza
     flameshot
@@ -37,6 +38,7 @@
     protonmail-bridge
     protonvpn-gui
     ripgrep
+    rofi
     signal-desktop
     slack
     terminator
