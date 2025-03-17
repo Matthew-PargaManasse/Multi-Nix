@@ -61,7 +61,7 @@
   #Graphics
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.modsetting.enable = true;
+  hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.open = true;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
   hardware.nvidia.prime = {
