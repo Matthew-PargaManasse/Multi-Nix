@@ -69,7 +69,7 @@
    nvidiaBusId = "PCI:1:0:0";
    amdgpuBusId = "PCI:5:0:0";
   };
-  hardware.nvidia.prime.offload.enableOffloadCmd = true;
+    #hardware.nvidia.prime.offload.enableOffloadCmd = true;
 
 
   # Configure keymap in X11
