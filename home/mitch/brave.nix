@@ -8,6 +8,7 @@
       { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
       { id = "enpfonmmpgoinjpglildebkaphbhndek"; } # Proton?
       { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # Tokyo Theme?
+      { id = "gcbommkclmclpchllfjekcdonpmejbdp"; } # https everywhere
     ];
   };
 }

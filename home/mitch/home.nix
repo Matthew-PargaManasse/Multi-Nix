@@ -17,11 +17,10 @@
     bat
     btop
     unetbootin
-    vim
     wget
     brave
     burpsuite
-    dolphin
+    kdePackages.dolphin
     element-desktop
     eza
     flameshot
