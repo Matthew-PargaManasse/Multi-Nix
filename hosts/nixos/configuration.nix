@@ -63,7 +63,7 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.open = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
   hardware.nvidia.prime = {
    sync.enable = true ;
    nvidiaBusId = "PCI:1:0:0";
@@ -127,8 +127,33 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # Enable Tailscale
-  services.tailscale.enable = true;
+  # Enable gpg
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+        enable = true;
+        #      pinentryPackage = "curses";
+        enableSSHSupport = true;
+    };
+
+  # Enable Tailscale with ability to be exit node
+  services.tailscale = {
+        enable = true;
+        useRoutingFeatures = "both";
+    };
+  services.tailscale.interfaceName = "userspace-networking";
+  services.networkd-dispatcher = {
+        enable = true;
+        rules."50.tailscale" = {
+            onState = ["routable"];
+            script = ''
+                ${pkgs.ethtool} -K enp5s0f3u1u4u4 rx-udp-gro-forwarding on rx-gro-list off
+            '';
+            #script = ''
+            #     "${pkgs.ethtool} NETDEV=$(ip -o route get 8.8.8.8 | cut -f 5 -d " ") | -K enp5s0f3u1u4u4 rx-udp-gro-forwarding on rx-gro-list off
+            #'';
+        };
+    };
+  networking.firewall.checkReversePath = "loose";
 
   #enable automatic generational garbage collection
   nix.gc = {
@@ -159,11 +184,12 @@
     wget
     zsh
     home-manager
-    linuxKernel.packages.linux_zen.rtl88xxau-aircrack
     arp-scan
     blueman
     brightnessctl
     cmake
+    dig
+    ethtool
     file
     gcc
     git
@@ -172,8 +198,10 @@
     lshw
     man
     mlocate
+    mosh
     netcat
     netdiscover
+    networkd-dispatcher
     networkmanagerapplet
     nmap
     openvpn
@@ -202,10 +230,78 @@
 
   environment.variables.EDITOR = "vim";
 
+  fonts.fontconfig.enable = true;
 
   fonts.packages = with pkgs; [
     meslo-lgs-nf
-    nerdfonts
+        #nerd-fonts.0xproto
+    nerd-fonts._3270
+    nerd-fonts.agave
+    nerd-fonts.anonymice
+    nerd-fonts.arimo
+    nerd-fonts.aurulent-sans-mono
+    nerd-fonts.bigblue-terminal
+    nerd-fonts.bitstream-vera-sans-mono
+    nerd-fonts.blex-mono
+    nerd-fonts.caskaydia-cove
+    nerd-fonts.caskaydia-mono
+    nerd-fonts.code-new-roman
+    nerd-fonts.comic-shanns-mono
+    nerd-fonts.commit-mono
+    nerd-fonts.cousine
+    nerd-fonts.d2coding
+    nerd-fonts.daddy-time-mono
+    nerd-fonts.departure-mono
+    nerd-fonts.dejavu-sans-mono
+    nerd-fonts.droid-sans-mono
+    nerd-fonts.envy-code-r
+    nerd-fonts.fantasque-sans-mono
+    nerd-fonts.fira-code
+    nerd-fonts.fira-mono
+    nerd-fonts.geist-mono
+    nerd-fonts.go-mono
+    nerd-fonts.gohufont
+    nerd-fonts.hack
+    nerd-fonts.hasklug
+    nerd-fonts.heavy-data
+    nerd-fonts.hurmit
+    nerd-fonts.im-writing
+    nerd-fonts.inconsolata
+    nerd-fonts.inconsolata-go
+    nerd-fonts.inconsolata-lgc
+    nerd-fonts.intone-mono
+    nerd-fonts.iosevka
+    nerd-fonts.iosevka-term
+    nerd-fonts.iosevka-term-slab
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.lekton
+    nerd-fonts.liberation
+    nerd-fonts.lilex
+    nerd-fonts.martian-mono
+    nerd-fonts.meslo-lg
+    nerd-fonts.monaspace
+    nerd-fonts.monofur
+    nerd-fonts.monoid
+    nerd-fonts.mononoki
+    nerd-fonts.mplus
+    nerd-fonts.noto
+    nerd-fonts.open-dyslexic
+    nerd-fonts.overpass
+    nerd-fonts.profont
+    nerd-fonts.proggy-clean-tt
+    nerd-fonts.recursive-mono
+    nerd-fonts.roboto-mono
+    nerd-fonts.shure-tech-mono
+    nerd-fonts.sauce-code-pro
+    nerd-fonts.space-mono
+    nerd-fonts.symbols-only
+    nerd-fonts.terminess-ttf
+    nerd-fonts.tinos
+    nerd-fonts.ubuntu
+    nerd-fonts.ubuntu-mono
+    nerd-fonts.ubuntu-sans
+    nerd-fonts.victor-mono
+    nerd-fonts.zed-mono
     font-awesome
     font-awesome_4
     font-awesome_5
@@ -221,7 +317,10 @@
   # };
 
   # List services that you want to enable:
-
+  services.resolved = {
+        enable = true;
+        dnssec = "false";
+    };
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
@@ -233,7 +332,6 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
 
   #Enabling Auto Upgrade. May affect stability?
   system.autoUpgrade = {
