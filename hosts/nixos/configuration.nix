@@ -15,6 +15,7 @@
     extraSpecialArgs = { inherit inputs; };
     users = {
       mitch = import ../../home/mitch/home.nix;
+      #lithobreaker = import ../../home/lithobreaker/default.nix;
    };
   };
 
@@ -109,6 +110,16 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
+  users.extraUsers.lithobreaker = {
+    isNormalUser = true;
+    description = "Testing Profile";
+    shell = pkgs.zsh;
+    home = "/home/lithobreaker";
+    extraGroups = [ "networkmanager" "wheel" ];
+  };
+
+
+
   # Enable hyprland
   programs.hyprland = {
     enable = true;
@@ -155,6 +166,11 @@
     };
   networking.firewall.checkReversePath = "loose";
 
+  networking.nameservers = [
+    "9.9.9.9"
+    "149.112.112.112"
+  ];
+
   #enable automatic generational garbage collection
   nix.gc = {
         automatic = true;
@@ -193,8 +209,12 @@
     file
     gcc
     git
+    kdePackages.kio-admin
     kitty
     killall
+    libreoffice-qt6
+    libsForQt5.kio-admin
+    hunspell
     lshw
     man
     mlocate
@@ -283,7 +303,6 @@
     nerd-fonts.monofur
     nerd-fonts.monoid
     nerd-fonts.mononoki
-    nerd-fonts.mplus
     nerd-fonts.noto
     nerd-fonts.open-dyslexic
     nerd-fonts.overpass
@@ -318,10 +337,17 @@
 
   # List services that you want to enable:
   services.resolved = {
-        enable = true;
-        dnssec = "false";
-    };
-  # Enable the OpenSSH daemon.
+    enable = true;
+    dnssec = "true";
+    domains = [ "~." ];
+    fallbackDns = [
+        "9.9.9.9"
+        "149.112.112.112"
+    ];
+    dnsovertls = "true";
+  };
+
+ # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
   # Enable Firmware updates
