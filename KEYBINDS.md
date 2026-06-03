@@ -16,7 +16,7 @@ As you update your `.nix` configuration files, remember to update this document 
 | `SUPER` + `Q` | Kill active window |
 | `SUPER` + `M` | Exit Hyprland |
 | `SUPER` + `E` | Open Yazi (File Manager) in Kitty |
-| `SUPER` + `Space` | Open Walker (App Launcher) |
+| `SUPER` + `Space` | Open Rofi (App Launcher) |
 | `SUPER` + `Tab` | Open Rofi (Window Switcher) |
 | `SUPER` + `Escape` | Open Wlogout (Power Menu) |
 | `SUPER` + `V` | Open Cliphist (Clipboard Manager via Rofi) |
@@ -99,7 +99,8 @@ These are the custom commands available in your terminal:
 | Alias / Command | Action | Note |
 |---|---|---|
 | `ls` | `eza --icons` | Modern `ls` replacement with icons |
-| `ll` | `eza -1la` | Detailed list view |
+| `ll` | `eza -lh --icons` | Detailed list view |
+| `lah` | `eza -lah --icons` | Detailed list view with hidden files |
 | `cat` | `bat` | Modern `cat` replacement with syntax highlighting |
 | `cd` | `z` (zoxide) | Smart directory jumper |
 | `update` | `sudo nix flake update && sudo nixos-rebuild switch --flake ./#nixos` | System updater alias |

@@ -12,7 +12,8 @@
 
     shellAliases = {
       ls = "eza --icons";
-      ll = "eza -1la";
+      ll = "eza -lh --icons";
+      lah = "eza -lah --icons";
       update = "sudo nix flake update && sudo nixos-rebuild switch --flake ./#nixos";
       cat = "bat";
       cd = "z";

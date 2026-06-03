@@ -9,7 +9,7 @@
     playerctl
     swaynotificationcenter
     wlogout
-    hyprpaper
+    swaybg
     
     # Screenshot utilities
     grim
@@ -28,6 +28,8 @@
       monitor = ",preferred,auto,1";
       
       exec-once = [
+        "waybar"
+        "swaybg -m fill -i ${../../wallpapers/ml4w_tokyonight.png}"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
       ];
@@ -42,9 +44,13 @@
         layout = "dwindle";
       };
 
-      # ML4W Decoration (Blur, Rounded Corners)
+      # ML4W Decoration (Blur, Rounded Corners, Transparency)
       decoration = {
         rounding = 10;
+        
+        active_opacity = 0.90;
+        inactive_opacity = 0.85;
+        fullscreen_opacity = 1.0;
         
         blur = {
           enabled = true;
@@ -90,7 +96,7 @@
         "$mainMod SHIFT, Space, togglefloating, "
         "$mainMod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
         "$mainMod, Tab, exec, rofi -show window"
-        "$mainMod, Space, exec, walker"
+        "$mainMod, Space, exec, rofi -show drun -show-icons"
         "$mainMod, Escape, exec, wlogout"
         "$mainMod, P, pseudo, "
         "$mainMod, J, layoutmsg, togglesplit"
@@ -179,11 +185,29 @@
       #memory,
       #network,
       #pulseaudio,
-      #tray {
+      #tray,
+      #custom-weather,
+      #custom-launcher,
+      #custom-power,
+      #mpris {
           padding: 0 10px;
           margin: 0 5px;
           background-color: #313244;
           border-radius: 10px;
+      }
+
+      #custom-launcher {
+          color: #89b4fa;
+          font-size: 18px;
+          padding-right: 15px;
+          padding-left: 15px;
+      }
+
+      #custom-power {
+          color: #f38ba8;
+          font-size: 16px;
+          padding-right: 15px;
+          padding-left: 15px;
       }
     '';
     settings = {
@@ -192,14 +216,40 @@
         position = "top";
         height = 30;
         spacing = 4;
-        modules-left = ["hyprland/workspaces"];
-        modules-center = ["hyprland/window" "mpris"];
-        modules-right = ["pulseaudio" "network" "cpu" "memory" "battery" "clock" "tray"];
+        modules-left = ["custom/launcher" "hyprland/workspaces" "custom/power"];
+        modules-center = ["cpu" "memory" "battery"];
+        modules-right = ["tray" "mpris" "custom/weather" "clock"];
+        
+        "custom/launcher" = {
+          format = "";
+          on-click = "rofi -show drun -show-icons";
+          tooltip = false;
+        };
+
+        "custom/power" = {
+          format = "⏻";
+          on-click = "wlogout";
+          tooltip = false;
+        };
+
+        "custom/weather" = {
+          exec = "${pkgs.curl}/bin/curl -s 'https://wttr.in/?format=1'";
+          interval = 1800;
+          format = "{}";
+          tooltip = false;
+        };
+
         mpris = {
           format = "{player_icon} {dynamic}";
           format-paused = "{status_icon} {dynamic}";
-          player-icons = { default = "▶"; };
+          player-icons = { default = "🎵"; };
           status-icons = { paused = "⏸"; };
+        };
+
+        clock = {
+          format = "{:%I:%M %p}";
+          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          format-alt = "{:%Y-%m-%d}";
         };
       };
     };
