@@ -7,7 +7,8 @@
   # Display Manager: SDDM (ML4W standard)
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
-  services.displayManager.sddm.theme = "sddm-astronaut";
+  services.displayManager.sddm.package = pkgs.kdePackages.sddm;
+  services.displayManager.sddm.theme = "sddm-astronaut-theme";
 
   # Window Manager: Hyprland
   programs.hyprland = {
@@ -54,6 +55,12 @@
       terminal = 10;
       applications = 10;
     };
+  };
+
+  stylix.cursor = {
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Ice";
+    size = 24;
   };
 
   # Common desktop packages
