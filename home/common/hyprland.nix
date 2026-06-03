@@ -25,7 +25,7 @@
     enable = true;
     
     settings = {
-      monitor = ",preferred,auto,1";
+      monitor = ",preferred,auto,auto";
       
       exec-once = [
         "waybar"
@@ -92,7 +92,7 @@
         "$mainMod, Return, exec, kitty"
         "$mainMod, Q, killactive, "
         "$mainMod, M, exit, "
-        "$mainMod, E, exec, kitty -e yazi"
+        "$mainMod, E, exec, kitty -o font_size=16 -e yazi"
         "$mainMod SHIFT, Space, togglefloating, "
         "$mainMod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
         "$mainMod, Tab, exec, rofi -show window"
@@ -237,6 +237,27 @@
           interval = 1800;
           format = "{}";
           tooltip = false;
+        };
+
+        cpu = {
+          format = " {usage}%";
+          tooltip = false;
+        };
+
+        memory = {
+          format = " {}%";
+        };
+
+        battery = {
+          states = {
+            warning = 30;
+            critical = 15;
+          };
+          format = "{icon} {capacity}%";
+          format-charging = " {capacity}%";
+          format-plugged = " {capacity}%";
+          format-alt = "{time} {icon}";
+          format-icons = ["" "" "" "" ""];
         };
 
         mpris = {

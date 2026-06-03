@@ -58,6 +58,7 @@
     blueman
     networkmanagerapplet
     wl-clipboard
+    spotify
   ];
 
   # Configure keymap in X11
