@@ -14,50 +14,33 @@
     aircrack-ng
     bloodhound
     burpsuite
-    certipy
-    cewl
     chisel
-    crunch
     dnsenum
     dnsrecon
     enum4linux
     evil-winrm
     exploitdb
-    eyewitness
     ffuf
     gobuster
     hashcat
-    hashid
     hydra
-    uv # Blazingly fast Rust-based Python package manager (replaces pipx)
+    uv # Blazingly fast Rust-based Python package manager (use `uv tool install` for impacket, certipy, cewl, wpscan, etc.)
     john
-    kerbrute
-    ligolo-ng
     masscan
     metasploit
-    netcat
+    netcat-openbsd
     netexec
     nikto
     nmap
     nuclei
-    onesixtyone
     proxychains
-    responder
     rustscan
     samba
-    smbmap
     socat
     sqlmap
     tcpdump
-    wfuzz
-    whatweb
     wireshark
-    wpscan
     # Utilities
-    unetbootin
-    virtualbox
-    virtualboxWithExtpack
-    virt-viewer
     gparted
     kdePackages.dolphin
     

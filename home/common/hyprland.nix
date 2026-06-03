@@ -42,7 +42,7 @@
         layout = "dwindle";
       };
 
-      # ML4W Decoration (Blur, Rounded Corners, Shadows)
+      # ML4W Decoration (Blur, Rounded Corners)
       decoration = {
         rounding = 10;
         
@@ -50,13 +50,13 @@
           enabled = true;
           size = 8;
           passes = 2;
-          new_optimizations = true;
         };
 
-        drop_shadow = true;
-        shadow_range = 4;
-        shadow_render_power = 3;
-        # "col.shadow" = "rgba(1a1a1aee)";
+        shadow = {
+          enabled = true;
+          range = 4;
+          render_power = 3;
+        };
       };
 
       # ML4W Signature Animations
@@ -74,12 +74,10 @@
       };
 
       dwindle = {
-        pseudotile = true;
         preserve_split = true;
       };
 
       master = {
-        new_is_master = true;
       };
 
       # ML4W Keybindings
@@ -95,7 +93,7 @@
         "$mainMod, Space, exec, walker"
         "$mainMod, Escape, exec, wlogout"
         "$mainMod, P, pseudo, "
-        "$mainMod, J, togglesplit, "
+        "$mainMod, J, layoutmsg, togglesplit"
         
         # Media controls
         ", XF86AudioRaiseVolume, exec, pamixer -i 5"

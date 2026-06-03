@@ -11,19 +11,11 @@
     
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     
-    hyprland.url = "github:hyprwm/Hyprland";
-    
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nvf.url = "github:notashelf/nvf";
     stylix.url = "github:danth/stylix";
   };
 

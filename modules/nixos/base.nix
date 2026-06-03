@@ -56,12 +56,12 @@
     git
     lshw
     mlocate
-    netcat
+    netcat-openbsd
     netdiscover
     networkmanagerapplet
     pciutils
-    python311
-    python311Packages.pip
+    python3
+    uv
     tailscale
     unzip
     usbutils
@@ -70,11 +70,8 @@
   environment.variables.EDITOR = "nvim";
 
   fonts.packages = with pkgs; [
-    meslo-lgs-nf
     nerd-fonts.meslo-lg
     font-awesome
-    font-awesome_4
-    font-awesome_5
   ];
 
   # Enable the OpenSSH daemon.

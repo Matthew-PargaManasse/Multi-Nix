@@ -13,32 +13,15 @@
   home.packages = with pkgs; [
     bat
     btop
-    eza
-    fastfetch
-    flameshot
-    fmt
     fzf
     kitty
-    mlocate
     obsidian
-    pipewire
-    pkg-config
     ripgrep
-    terminator
     wget
-    waybar
-    rofi
-    dunst
-    font-awesome
-    font-awesome_4
-    font-awesome_5
-    tokyonight-gtk-theme
-    gnome-tweaks
   ];
 
   home.sessionVariables = {
      EDITOR = "nvim";
-     GTK_THEME = "Tokyonight-Dark-B";
   };
 
   programs.home-manager.enable = true;

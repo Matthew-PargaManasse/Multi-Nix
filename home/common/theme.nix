@@ -5,16 +5,13 @@
       gtk = {
         enable = true;
         gtk3.extraConfig.gtk-decoration-layout = "menu:";
-        # theme = {
-        #   name = "Tokyonight-Dark";
-        #   package = pkgs.tokyo-night-gtk;
-        # };
+        # theme is managed by Stylix (dynamic wallpaper-based colors)
         iconTheme = {
-          name = "Tokyonight-Dark";
-	  package = pkgs.tokyo-night-gtk;
+          name = lib.mkForce "Tokyonight-Dark";
+          package = pkgs.tokyo-night-gtk;
         };
         cursorTheme = {
-          name = "Bibata-Modern-Ice";
+          name = lib.mkForce "Bibata-Modern-Ice";
           package = pkgs.bibata-cursors;
         };
       };
