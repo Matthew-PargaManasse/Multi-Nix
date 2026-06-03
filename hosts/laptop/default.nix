@@ -64,6 +64,23 @@
   };
   nix.optimise.automatic = true;
 
+  # Power Management
+  services.auto-cpufreq = {
+    enable = true;
+    settings = {
+      battery = {
+        governor = "powersave";
+        energy_performance_preference = "balance_power";
+        turbo = "never";
+      };
+      charger = {
+        governor = "performance";
+        energy_performance_preference = "performance";
+        turbo = "auto";
+      };
+    };
+  };
+
   # Define system users
   users.users.mitch = {
     isNormalUser = true;

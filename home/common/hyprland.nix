@@ -310,17 +310,17 @@
       };
       listener = [
         {
-          timeout = 150;
-          on-timeout = "brightnessctl -s set 10";
+          timeout = 600; # 10 mins
+          on-timeout = "if ! cat /sys/class/power_supply/*/online 2>/dev/null | grep -q 1; then brightnessctl -s set 10; fi";
           on-resume = "brightnessctl -r";
         }
         {
-          timeout = 300;
-          on-timeout = "loginctl lock-session";
+          timeout = 1200; # 20 mins
+          on-timeout = "if ! cat /sys/class/power_supply/*/online 2>/dev/null | grep -q 1; then loginctl lock-session; fi";
         }
         {
-          timeout = 330;
-          on-timeout = "hyprctl dispatch dpms off";
+          timeout = 1230; # 20.5 mins
+          on-timeout = "if ! cat /sys/class/power_supply/*/online 2>/dev/null | grep -q 1; then hyprctl dispatch dpms off; fi";
           on-resume = "hyprctl dispatch dpms on";
         }
       ];
