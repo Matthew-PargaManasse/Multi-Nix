@@ -7,8 +7,7 @@
   # Display Manager: SDDM (ML4W standard)
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
-  services.displayManager.sddm.theme = "sddm-astronaut-theme";
-  stylix.targets.sddm.enable = false;
+  services.displayManager.sddm.theme = "sddm-astronaut";
 
   # Window Manager: Hyprland
   programs.hyprland = {
