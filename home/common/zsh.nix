@@ -57,6 +57,16 @@
     enableZshIntegration = true;
   };
 
+  # Override Yazi's desktop file so Rofi launches it with a larger font in Kitty
+  xdg.desktopEntries.yazi = {
+    name = "Yazi";
+    genericName = "File Manager";
+    exec = "kitty -o font_size=16 -e yazi %u";
+    terminal = false; # We launch Kitty ourselves
+    categories = [ "Utility" "Core" "System" "FileTools" "FileManager" ];
+    icon = "system-file-manager";
+  };
+
   home.packages = with pkgs; [
     fastfetch
   ];
