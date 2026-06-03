@@ -8,6 +8,7 @@
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.displayManager.sddm.theme = "sddm-astronaut-theme";
+  stylix.targets.sddm.enable = false;
 
   # Window Manager: Hyprland
   programs.hyprland = {
