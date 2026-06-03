@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   home.packages = with pkgs; [
@@ -39,8 +39,8 @@
         gaps_in = 3;
         gaps_out = 8;
         border_size = 2;
-        "col.active_border" = "rgba(7aa2f7ee) rgba(bb9af7ee) 45deg";
-        "col.inactive_border" = "rgba(1a1b26aa)";
+        "col.active_border" = lib.mkForce "rgba(7aa2f7ee) rgba(bb9af7ee) 45deg";
+        "col.inactive_border" = lib.mkForce "rgba(1a1b26aa)";
         layout = "dwindle";
       };
 
