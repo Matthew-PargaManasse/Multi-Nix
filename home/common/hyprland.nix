@@ -218,7 +218,7 @@
         spacing = 4;
         modules-left = ["custom/launcher" "hyprland/workspaces" "custom/power"];
         modules-center = ["cpu" "memory" "battery"];
-        modules-right = ["tray" "mpris" "custom/weather" "clock"];
+        modules-right = ["tray" "network" "mpris" "custom/weather" "clock"];
         
         "custom/launcher" = {
           format = "";
@@ -258,6 +258,13 @@
           format-plugged = " {capacity}%";
           format-alt = "{time} {icon}";
           format-icons = ["" "" "" "" ""];
+        };
+
+        network = {
+          format-wifi = " {ipaddr}";
+          format-ethernet = " {ipaddr}";
+          format-disconnected = "⚠ Disconnected";
+          tooltip-format = "{ifname} via {gwaddr}";
         };
 
         mpris = {

@@ -7,6 +7,7 @@
   # Display Manager: SDDM (ML4W standard)
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
+  services.displayManager.sddm.theme = "sddm-astronaut-theme";
 
   # Window Manager: Hyprland
   programs.hyprland = {
@@ -49,6 +50,10 @@
       package = pkgs.noto-fonts-emoji;
       name = "Noto Color Emoji";
     };
+    sizes = {
+      terminal = 10;
+      applications = 10;
+    };
   };
 
   # Common desktop packages
@@ -59,6 +64,7 @@
     networkmanagerapplet
     wl-clipboard
     spotify
+    sddm-astronaut
   ];
 
   # Configure keymap in X11
