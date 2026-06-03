@@ -9,7 +9,7 @@
     playerctl
     swaynotificationcenter
     wlogout
-    swaybg
+    wpaperd
     
     # Screenshot utilities
     grim
@@ -29,18 +29,18 @@
       
       exec-once = [
         "waybar"
-        "swaybg -m fill -i ${../../wallpapers/ml4w_tokyonight.png}"
+        "wpaperd -d"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
       ];
 
       # ML4W Style General Settings
       general = {
-        gaps_in = 5;
-        gaps_out = 10;
+        gaps_in = 3;
+        gaps_out = 8;
         border_size = 2;
-        # "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        # "col.inactive_border" = "rgba(595959aa)";
+        "col.active_border" = "rgba(7aa2f7ee) rgba(bb9af7ee) 45deg";
+        "col.inactive_border" = "rgba(1a1b26aa)";
         layout = "dwindle";
       };
 
@@ -48,8 +48,8 @@
       decoration = {
         rounding = 10;
         
-        active_opacity = 0.90;
-        inactive_opacity = 0.85;
+        active_opacity = 0.80;
+        inactive_opacity = 0.65;
         fullscreen_opacity = 1.0;
         
         blur = {
@@ -324,6 +324,17 @@
           on-resume = "hyprctl dispatch dpms on";
         }
       ];
+    };
+  };
+
+  # Configure wpaperd for dynamic timed wallpapers
+  programs.wpaperd = {
+    enable = true;
+    settings = {
+      default = {
+        path = "/home/mitch/wallpapers/dynamic";
+        duration = "30m";
+      };
     };
   };
 }

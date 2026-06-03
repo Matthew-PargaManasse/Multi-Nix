@@ -40,6 +40,42 @@
     sqlmap
     tcpdump
     wireshark
+    
+    # --- Wireless Attacks ---
+    aircrack-ng
+    hcxdumptool
+    hcxtools
+    wifite2
+    kismet
+    reaverwps
+    
+    # --- Reverse Engineering & Forensics ---
+    ghidra
+    radare2
+    binwalk
+    autopsy
+    volatility3
+    
+    # --- Information Gathering & OSINT ---
+    theharvester
+    recon-ng
+    maltego
+    
+    # --- Exploitation & Sniffing ---
+    bettercap
+    ligolo-ng
+    responder
+    
+    # --- Passwords & Wordlists ---
+    crunch
+    wordlists
+    
+    # --- Additional Protocols & Scanners ---
+    net-snmp # provides snmpwalk
+    freerdp  # provides xfreerdp
+    whatweb
+    wfuzz
+
     # Utilities
     gparted
     kdePackages.dolphin
