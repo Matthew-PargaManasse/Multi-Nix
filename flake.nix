@@ -2,16 +2,21 @@
   description = "Nixos config flake";
 
   inputs = {
-
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    
     hyprland.url = "github:hyprwm/Hyprland";
+    
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-        #    plugin-onedark.url = "github:navarasu/onedark.nvim";
-        #    plugin-onedark.flake = false;
 
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -20,11 +25,9 @@
 
     nvf.url = "github:notashelf/nvf";
     stylix.url = "github:danth/stylix";
-
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
-
+  outputs = { self, nixpkgs, nix-darwin, nixos-hardware, home-manager, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -33,100 +36,78 @@
         allowUnfree = true;
       };
     };
-    host = "nixos";
-    profile = "nvidia-laptop";
-    username = "lithobreaker";
-
-
   in
   {
-
     nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
-            specialArgs = { inherit inputs system; };
-            modules = [
-                ./hosts/nixos/configuration.nix
-            ];
-        };
-        amd = nixpkgs.lib.nixosSystem {
+      laptop = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = {
-          inherit inputs;
-          inherit username;
-          inherit host;
-          inherit profile;
-        };
-        modules = [./profiles/amd];
-      };
-      nvidia = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs;
-          inherit username;
-          inherit host;
-          inherit profile;
-        };
-        modules = [./profiles/nvidia];
-      };
-      nvidia-laptop = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs;
-          inherit username;
-          inherit host;
-          inherit profile;
-        };
-        modules = [./profiles/nvidia-laptop];
-      };
-      intel = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs;
-          inherit username;
-          inherit host;
-          inherit profile;
-        };
-        modules = [./profiles/intel];
-      };
-      vm = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs;
-          inherit username;
-          inherit host;
-          inherit profile;
-        };
-        modules = [./profiles/vm];
-      };
-    };
-
-      mitch = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-      modules = [
-        ./home/mitch/home.nix
-        {
-          wayland.windowManager.hyprland = {
-            enable = true;
-            # set the flake package
-            package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-            portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-          };
-        }
+        specialArgs = { inherit inputs; };
+        modules = [
+          inputs.stylix.nixosModules.stylix
+          ./hosts/laptop/default.nix
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.users.mitch = import ./home/mitch.nix;
+            home-manager.users.mitch-daily = import ./home/mitch-daily.nix;
+            home-manager.users.mitch-embedded = import ./home/mitch-embedded.nix;
+          }
         ];
-      extraSpecialArgs = { inherit inputs; };
-    };
-
-
-      lithobreaker = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-      modules = [
-        ./home/lithobreaker/default.nix
+      };
+      
+      desktop = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs; };
+        modules = [
+          inputs.stylix.nixosModules.stylix
+          ./hosts/desktop/default.nix
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.users.mitch = import ./home/mitch.nix;
+            home-manager.users.mitch-daily = import ./home/mitch-daily.nix;
+            home-manager.users.mitch-embedded = import ./home/mitch-embedded.nix;
+          }
         ];
-      extraSpecialArgs = { inherit inputs; };
+      };
+      
+      rpi4 = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          inputs.stylix.nixosModules.stylix
+          nixos-hardware.nixosModules.raspberry-pi-4
+          ./hosts/rpi4/default.nix
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.users.mitch = import ./home/mitch.nix;
+            home-manager.users.mitch-daily = import ./home/mitch-daily.nix;
+            home-manager.users.mitch-embedded = import ./home/mitch-embedded.nix;
+          }
+        ];
+      };
     };
 
-
+    darwinConfigurations = {
+      macos = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/macos/default.nix
+          home-manager.darwinModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.users.mitch = import ./home/mitch.nix;
+            home-manager.users.mitch-daily = import ./home/mitch-daily.nix;
+            home-manager.users.mitch-embedded = import ./home/mitch-embedded.nix;
+          }
+        ];
+      };
+    };
   };
 }
