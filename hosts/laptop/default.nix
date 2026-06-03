@@ -9,7 +9,8 @@
 
   networking.hostName = "laptop";
 
-  boot.initrd.luks.devices."luks-5cd87e8a-61fc-411e-b3d8-c316b8edcc3a".device = "/dev/disk/by-uuid/5cd87e8a-61fc-411e-b3d8-c316b8edcc3a";
+  # LUKS Encryption (Uncomment and replace FILLER-UUID if using LUKS)
+  # boot.initrd.luks.devices."luks-FILLER-UUID".device = "/dev/disk/by-uuid/FILLER-UUID";
 
   # Graphics and Nvidia Configuration
   hardware.graphics.enable = true;
