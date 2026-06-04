@@ -40,14 +40,17 @@
     settings = {
       monitor = ",preferred,auto,1";
 
-      # Essential environment variables for Hyprland + Nvidia + Kitty
+      # Essential environment variables for Hyprland + Nvidia
       env = [
         "LIBVA_DRIVER_NAME,nvidia"
         "XDG_SESSION_TYPE,wayland"
-        "GBM_BACKEND,nvidia-drm"
         "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-        "WLR_NO_HARDWARE_CURSORS,1"
       ];
+
+      # Hyprland >v0.41 requires this instead of WLR_NO_HARDWARE_CURSORS
+      cursor = {
+        no_hardware_cursors = true;
+      };
 
       exec-once = [
         "waybar"
