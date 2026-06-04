@@ -8,7 +8,7 @@
 
   # Display Manager: SDDM (ML4W standard)
   services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = false; # Reverted to X11 to fix Hyprland crashing on boot
+  services.displayManager.sddm.wayland.enable = true; # Required for clean handoff to Hyprland on Intel
   services.displayManager.sddm.package = pkgs.kdePackages.sddm;
   services.displayManager.sddm.theme = "sddm-astronaut-theme";
   services.displayManager.sddm.extraPackages = with pkgs.kdePackages; [
@@ -92,11 +92,7 @@
     xdg-utils # Required for opening URLs (like OAuth login)
   ];
 
-  # Enable GNOME Keyring for saving passwords (fixes Antigravity IDE logging out)
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.sddm.enableGnomeKeyring = true;
-  security.pam.services.sddm.kwallet.enable = pkgs.lib.mkForce false; # Prevent KWallet from hijacking the secret service
-
+  # Note: GNOME Keyring removed due to SDDM PAM freeze on login
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
