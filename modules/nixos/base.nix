@@ -1,6 +1,9 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   # Bootloader setup (common for UEFI)
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -25,8 +28,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-
-
   # Enable ZSH
   programs.zsh.enable = true;
   # Install firefox.
@@ -39,7 +40,7 @@
   services.tailscale.enable = true;
 
   # Enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Enable nh (Nix Helper)
   programs.nh = {

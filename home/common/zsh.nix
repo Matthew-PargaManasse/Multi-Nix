@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ...}:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -26,12 +29,12 @@
     zplug = {
       enable = true;
       plugins = [
-        { name = "zsh-users/zsh-autosuggestions"; }
+        {name = "zsh-users/zsh-autosuggestions";}
       ];
     };
     oh-my-zsh = {
-     enable = true;
-     plugins = [ "web-search" "kitty" "nmap" "tailscale" ];
+      enable = true;
+      plugins = ["web-search" "kitty" "nmap" "tailscale"];
     };
   };
 
@@ -63,12 +66,11 @@
     genericName = "File Manager";
     exec = "kitty -o font_size=16 -e yazi %u";
     terminal = false; # We launch Kitty ourselves
-    categories = [ "Utility" "Core" "System" "FileTools" "FileManager" ];
+    categories = ["Utility" "Core" "System" "FileTools" "FileManager"];
     icon = "system-file-manager";
   };
 
   home.packages = with pkgs; [
     fastfetch
   ];
-
 }

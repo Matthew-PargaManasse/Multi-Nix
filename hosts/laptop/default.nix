@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ../../modules/nixos/base.nix
     ./hardware-configuration.nix
@@ -14,7 +16,7 @@
 
   # Graphics and Nvidia Configuration
   hardware.graphics.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
     modesetting.enable = true;
     open = true;
@@ -34,10 +36,10 @@
   services.resolved = {
     enable = true;
     dnssec = "true";
-    domains = [ "~." ];
+    domains = ["~."];
     fallbackDns = [
-        "9.9.9.9"
-        "149.112.112.112"
+      "9.9.9.9"
+      "149.112.112.112"
     ];
     dnsovertls = "true";
   };
@@ -48,10 +50,10 @@
   services.networkd-dispatcher = {
     enable = true;
     rules."50.tailscale" = {
-        onState = ["routable"];
-        script = ''
-            ${pkgs.ethtool}/bin/ethtool -K enp5s0f3u1u4u4 rx-udp-gro-forwarding on rx-gro-list off
-        '';
+      onState = ["routable"];
+      script = ''
+        ${pkgs.ethtool}/bin/ethtool -K enp5s0f3u1u4u4 rx-udp-gro-forwarding on rx-gro-list off
+      '';
     };
   };
   networking.firewall.checkReversePath = "loose";
@@ -81,21 +83,21 @@
     isNormalUser = true;
     description = "mitch";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
   };
 
   users.users.mitch-daily = {
     isNormalUser = true;
     description = "Daily Tasks and Privacy";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
   };
 
   users.users.mitch-embedded = {
     isNormalUser = true;
     description = "Embedded Systems Exploitation";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "dialout" "plugdev" ];
+    extraGroups = ["networkmanager" "wheel" "dialout" "plugdev"];
   };
 
   system.stateVersion = "24.05";

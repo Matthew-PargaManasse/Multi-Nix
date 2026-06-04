@@ -1,6 +1,9 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./base.nix
     ./common/brave.nix
@@ -40,36 +43,36 @@
     sqlmap
     tcpdump
     wireshark
-    
+
     # --- Wireless Attacks ---
     hcxdumptool
     hcxtools
     wifite2
     kismet
     reaverwps
-    
+
     # --- Reverse Engineering & Forensics ---
     ghidra
     radare2
     binwalk
     autopsy
     volatility3
-    
+
     # --- Information Gathering & OSINT ---
     theharvester
     recon-ng
     maltego
-    
+
     # --- Exploitation & Sniffing ---
     bettercap
     responder
-    
+
     # --- Passwords & Wordlists ---
     wordlists
-    
+
     # --- Additional Protocols & Scanners ---
     net-snmp # provides snmpwalk
-    freerdp  # provides xfreerdp
+    freerdp # provides xfreerdp
     whatweb
     wfuzz
 
@@ -78,15 +81,15 @@
     kdePackages.dolphin
     (pkgs.callPackage ../pkgs/antigravity/default.nix {})
     (pkgs.callPackage ../pkgs/antigravity-ide/default.nix {})
-    
+
     # IDEs / Dev
     (vscode-with-extensions.override {
-        vscodeExtensions = with vscode-extensions; [
-            bbenoist.nix
-            ms-python.python
-            ms-vscode.powershell
-            redhat.vscode-yaml
-        ];
+      vscodeExtensions = with vscode-extensions; [
+        bbenoist.nix
+        ms-python.python
+        ms-vscode.powershell
+        redhat.vscode-yaml
+      ];
     })
   ];
 }

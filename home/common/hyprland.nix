@@ -1,6 +1,10 @@
-{ config, pkgs, inputs, lib, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}: {
   home.packages = with pkgs; [
     # ML4W Hyprland Ecosystem Dependencies
     waybar
@@ -10,23 +14,23 @@
     swaynotificationcenter
     wlogout
     wpaperd
-    
+
     # Screenshot utilities
     grim
     slurp
     wl-clipboard
     swappy
-    
+
     # QoL Tools
     cliphist
   ];
 
   wayland.windowManager.hyprland = {
     enable = true;
-    
+
     settings = {
       monitor = ",preferred,auto,1";
-      
+
       exec-once = [
         "waybar"
         "wpaperd -d"
@@ -47,11 +51,11 @@
       # ML4W Decoration (Blur, Rounded Corners, Transparency)
       decoration = {
         rounding = 10;
-        
+
         active_opacity = 0.80;
         inactive_opacity = 0.65;
         fullscreen_opacity = 1.0;
-        
+
         blur = {
           enabled = true;
           size = 8;
@@ -100,20 +104,20 @@
         "$mainMod, Escape, exec, wlogout"
         "$mainMod, P, pseudo, "
         "$mainMod, J, layoutmsg, togglesplit"
-        
+
         # Media controls
         ", XF86AudioRaiseVolume, exec, pamixer -i 5"
         ", XF86AudioLowerVolume, exec, pamixer -d 5"
         ", XF86AudioMute, exec, pamixer -t"
         ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
         ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-        
+
         # Navigation
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
         "$mainMod, down, movefocus, d"
-        
+
         # Workspaces
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
@@ -125,7 +129,7 @@
         "$mainMod, 8, workspace, 8"
         "$mainMod, 9, workspace, 9"
         "$mainMod, 0, workspace, 10"
-        
+
         # Move active window to workspace
         "$mainMod SHIFT, 1, movetoworkspace, 1"
         "$mainMod SHIFT, 2, movetoworkspace, 2"
@@ -141,7 +145,7 @@
         # Screenshot bindings
         ", Print, exec, grim -g \"$(slurp)\" - | swappy -f -"
       ];
-      
+
       bindm = [
         # Mouse movements
         "$mainMod, mouse:272, movewindow"
@@ -161,24 +165,24 @@
           font-size: 14px;
           min-height: 0;
       }
-      
+
       window#waybar {
           background: rgba(30, 30, 46, 0.8);
           color: #cdd6f4;
       }
-      
+
       #workspaces button {
           padding: 0 5px;
           background: transparent;
           color: #cdd6f4;
           border-bottom: 2px solid transparent;
       }
-      
+
       #workspaces button.focused {
           background: #313244;
           border-bottom: 2px solid #89b4fa;
       }
-      
+
       #clock,
       #battery,
       #cpu,
@@ -219,7 +223,7 @@
         modules-left = ["custom/launcher" "hyprland/workspaces" "custom/power"];
         modules-center = ["cpu" "memory" "battery"];
         modules-right = ["tray" "network" "mpris" "custom/weather" "clock"];
-        
+
         "custom/launcher" = {
           format = "";
           on-click = "rofi -show drun -show-icons";
@@ -270,8 +274,8 @@
         mpris = {
           format = "{player_icon} {dynamic}";
           format-paused = "{status_icon} {dynamic}";
-          player-icons = { default = "🎵"; };
-          status-icons = { paused = "⏸"; };
+          player-icons = {default = "🎵";};
+          status-icons = {paused = "⏸";};
         };
 
         clock = {
@@ -287,12 +291,42 @@
   programs.wlogout = {
     enable = true;
     layout = [
-      { label = "lock"; action = "hyprlock"; text = "Lock"; keybind = "l"; }
-      { label = "hibernate"; action = "systemctl hibernate"; text = "Hibernate"; keybind = "h"; }
-      { label = "logout"; action = "hyprctl dispatch exit 0"; text = "Logout"; keybind = "e"; }
-      { label = "shutdown"; action = "systemctl poweroff"; text = "Shutdown"; keybind = "s"; }
-      { label = "suspend"; action = "systemctl suspend"; text = "Suspend"; keybind = "u"; }
-      { label = "reboot"; action = "systemctl reboot"; text = "Reboot"; keybind = "r"; }
+      {
+        label = "lock";
+        action = "hyprlock";
+        text = "Lock";
+        keybind = "l";
+      }
+      {
+        label = "hibernate";
+        action = "systemctl hibernate";
+        text = "Hibernate";
+        keybind = "h";
+      }
+      {
+        label = "logout";
+        action = "hyprctl dispatch exit 0";
+        text = "Logout";
+        keybind = "e";
+      }
+      {
+        label = "shutdown";
+        action = "systemctl poweroff";
+        text = "Shutdown";
+        keybind = "s";
+      }
+      {
+        label = "suspend";
+        action = "systemctl suspend";
+        text = "Suspend";
+        keybind = "u";
+      }
+      {
+        label = "reboot";
+        action = "systemctl reboot";
+        text = "Reboot";
+        keybind = "r";
+      }
     ];
   };
 

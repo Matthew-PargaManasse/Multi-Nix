@@ -1,6 +1,12 @@
-{ pkgs ? import <nixpkgs> {}, stdenv, lib, fetchurl, autoPatchelfHook, makeWrapper, undmg }:
-
-let
+{
+  pkgs ? import <nixpkgs> {},
+  stdenv,
+  lib,
+  fetchurl,
+  autoPatchelfHook,
+  makeWrapper,
+  undmg,
+}: let
   version = "2.0.4";
 
   # Define architectures and their specific download URLs for Antigravity IDE
@@ -24,111 +30,113 @@ let
   };
 
   srcData = sources.${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
-
 in
-stdenv.mkDerivation rec {
-  pname = "antigravity-ide";
-  inherit version;
+  stdenv.mkDerivation rec {
+    pname = "antigravity-ide";
+    inherit version;
 
-  src = fetchurl {
-    url = srcData.url;
-    hash = srcData.hash;
-  };
+    src = fetchurl {
+      url = srcData.url;
+      hash = srcData.hash;
+    };
 
-  nativeBuildInputs = [
-    makeWrapper
-  ] ++ lib.optionals stdenv.isLinux [
-    autoPatchelfHook
-  ] ++ lib.optionals stdenv.isDarwin [
-    undmg
-  ];
+    nativeBuildInputs =
+      [
+        makeWrapper
+      ]
+      ++ lib.optionals stdenv.isLinux [
+        autoPatchelfHook
+      ]
+      ++ lib.optionals stdenv.isDarwin [
+        undmg
+      ];
 
-  buildInputs = lib.optionals stdenv.isLinux (with pkgs; [
-    alsa-lib
-    at-spi2-atk
-    at-spi2-core
-    atk
-    cairo
-    cups
-    curl
-    dbus
-    expat
-    fontconfig
-    freetype
-    glib
-    gtk3
-    libdrm
-    libxkbcommon
-    mesa
-    nspr
-    nss
-    pango
-    systemd
-    webkitgtk_4_1
-    libsoup_3
-    libsecret
-    xorg.libX11
-    xorg.libXcomposite
-    xorg.libXdamage
-    xorg.libXext
-    xorg.libXfixes
-    xorg.libXrandr
-    xorg.libxcb
-    xorg.libxkbfile
-    xorg.libxshmfence
-  ]);
+    buildInputs = lib.optionals stdenv.isLinux (with pkgs; [
+      alsa-lib
+      at-spi2-atk
+      at-spi2-core
+      atk
+      cairo
+      cups
+      curl
+      dbus
+      expat
+      fontconfig
+      freetype
+      glib
+      gtk3
+      libdrm
+      libxkbcommon
+      mesa
+      nspr
+      nss
+      pango
+      systemd
+      webkitgtk_4_1
+      libsoup_3
+      libsecret
+      xorg.libX11
+      xorg.libXcomposite
+      xorg.libXdamage
+      xorg.libXext
+      xorg.libXfixes
+      xorg.libXrandr
+      xorg.libxcb
+      xorg.libxkbfile
+      xorg.libxshmfence
+    ]);
 
-  unpackPhase = ''
-    if [[ "${stdenv.hostPlatform.system}" == *-linux ]]; then
-      tar -xf $src
-      # The extracted folder might have spaces or differ slightly
-      cd "Antigravity IDE"* || cd Antigravity* || cd .
-    elif [[ "${stdenv.hostPlatform.system}" == *-darwin ]]; then
-      undmg $src
-    fi
-  '';
+    unpackPhase = ''
+      if [[ "${stdenv.hostPlatform.system}" == *-linux ]]; then
+        tar -xf $src
+        # The extracted folder might have spaces or differ slightly
+        cd "Antigravity IDE"* || cd Antigravity* || cd .
+      elif [[ "${stdenv.hostPlatform.system}" == *-darwin ]]; then
+        undmg $src
+      fi
+    '';
 
-  installPhase = ''
-    runHook preInstall
+    installPhase = ''
+      runHook preInstall
 
-    if [[ "${stdenv.hostPlatform.system}" == *-linux ]]; then
-      mkdir -p $out/bin $out/opt/antigravity-ide
-      cp -r * $out/opt/antigravity-ide/
-      
-      # The binary might be "Antigravity IDE" or "antigravity-ide"
-      # We find the main executable in the root of the opt directory
-      if [ -f "$out/opt/antigravity-ide/Antigravity IDE" ]; then
-        EXEC_TARGET="$out/opt/antigravity-ide/Antigravity IDE"
-      elif [ -f "$out/opt/antigravity-ide/antigravity-ide" ]; then
-        EXEC_TARGET="$out/opt/antigravity-ide/antigravity-ide"
-      elif [ -f "$out/opt/antigravity-ide/antigravity" ]; then
-        EXEC_TARGET="$out/opt/antigravity-ide/antigravity"
-      else
-        echo "Could not find main executable!"
-        exit 1
+      if [[ "${stdenv.hostPlatform.system}" == *-linux ]]; then
+        mkdir -p $out/bin $out/opt/antigravity-ide
+        cp -r * $out/opt/antigravity-ide/
+
+        # The binary might be "Antigravity IDE" or "antigravity-ide"
+        # We find the main executable in the root of the opt directory
+        if [ -f "$out/opt/antigravity-ide/Antigravity IDE" ]; then
+          EXEC_TARGET="$out/opt/antigravity-ide/Antigravity IDE"
+        elif [ -f "$out/opt/antigravity-ide/antigravity-ide" ]; then
+          EXEC_TARGET="$out/opt/antigravity-ide/antigravity-ide"
+        elif [ -f "$out/opt/antigravity-ide/antigravity" ]; then
+          EXEC_TARGET="$out/opt/antigravity-ide/antigravity"
+        else
+          echo "Could not find main executable!"
+          exit 1
+        fi
+
+        makeWrapper "$EXEC_TARGET" $out/bin/antigravity-ide \
+          --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath buildInputs}" \
+          --add-flags "--enable-features=UseOzonePlatform --ozone-platform=wayland"
+
+      elif [[ "${stdenv.hostPlatform.system}" == *-darwin ]]; then
+        mkdir -p $out/Applications
+        cp -r "Antigravity IDE.app" $out/Applications/ 2>/dev/null || cp -r "Antigravity.app" $out/Applications/
+
+        mkdir -p $out/bin
+        if [ -f "$out/Applications/Antigravity IDE.app/Contents/MacOS/Antigravity IDE" ]; then
+          makeWrapper "$out/Applications/Antigravity IDE.app/Contents/MacOS/Antigravity IDE" $out/bin/antigravity-ide
+        else
+          makeWrapper "$out/Applications/Antigravity.app/Contents/MacOS/Antigravity" $out/bin/antigravity-ide
+        fi
       fi
 
-      makeWrapper "$EXEC_TARGET" $out/bin/antigravity-ide \
-        --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath buildInputs}" \
-        --add-flags "--enable-features=UseOzonePlatform --ozone-platform=wayland"
+      runHook postInstall
+    '';
 
-    elif [[ "${stdenv.hostPlatform.system}" == *-darwin ]]; then
-      mkdir -p $out/Applications
-      cp -r "Antigravity IDE.app" $out/Applications/ 2>/dev/null || cp -r "Antigravity.app" $out/Applications/
-      
-      mkdir -p $out/bin
-      if [ -f "$out/Applications/Antigravity IDE.app/Contents/MacOS/Antigravity IDE" ]; then
-        makeWrapper "$out/Applications/Antigravity IDE.app/Contents/MacOS/Antigravity IDE" $out/bin/antigravity-ide
-      else
-        makeWrapper "$out/Applications/Antigravity.app/Contents/MacOS/Antigravity" $out/bin/antigravity-ide
-      fi
-    fi
-
-    runHook postInstall
-  '';
-
-  meta = with lib; {
-    description = "Google Antigravity IDE (Multi-Platform)";
-    platforms = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
-  };
-}
+    meta = with lib; {
+      description = "Google Antigravity IDE (Multi-Platform)";
+      platforms = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
+    };
+  }

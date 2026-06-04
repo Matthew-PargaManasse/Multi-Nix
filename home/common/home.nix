@@ -1,5 +1,9 @@
-{ config, pkgs, inputs, ... }:
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./zsh.nix
     ./neovim
@@ -47,12 +51,12 @@
     virtualbox
     virtualboxWithExtpack
     (vscode-with-extensions.override {
-        vscodeExtensions = with vscode-extensions; [
-            bbenoist.nix
-            ms-python.python
-            ms-vscode.powershell
-            redhat.vscode-yaml
-        ];
+      vscodeExtensions = with vscode-extensions; [
+        bbenoist.nix
+        ms-python.python
+        ms-vscode.powershell
+        redhat.vscode-yaml
+      ];
     })
     font-awesome
     font-awesome_4
@@ -63,16 +67,14 @@
     gparted
     libsForQt5.qt5ct
     waybar
-    ];
+  ];
 
-
-  home.file =  {};
+  home.file = {};
 
   home.sessionVariables = {
-     EDITOR = "nvim";
-     GTK_THEME = "Tokyonight-Dark-B";
+    EDITOR = "nvim";
+    GTK_THEME = "Tokyonight-Dark-B";
   };
-
 
   nixpkgs.config.allowUnfree = true;
   # Let Home Manager install and manage itself.
@@ -87,5 +89,4 @@
       safe.directory = "/etc/nixos";
     };
   };
-
 }

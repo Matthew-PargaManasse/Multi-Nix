@@ -1,6 +1,9 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./base.nix
   ];
@@ -16,20 +19,20 @@
     aircrack-ng
     burpsuite
     metasploit
-    
+
     # Extra embedded tooling
     radare2
     binutils
     openocd
     minicom
     picocom
-    
+
     # IDEs / Dev
     (vscode-with-extensions.override {
-        vscodeExtensions = with vscode-extensions; [
-            bbenoist.nix
-            ms-python.python
-        ];
+      vscodeExtensions = with vscode-extensions; [
+        bbenoist.nix
+        ms-python.python
+      ];
     })
   ];
 }

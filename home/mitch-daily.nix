@@ -1,6 +1,9 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./base.nix
     ./common/brave.nix
@@ -17,7 +20,7 @@
     element-desktop
     slack
     thunderbird
-    
+
     # Desktop Apps
     gimp
     kdePackages.dolphin
