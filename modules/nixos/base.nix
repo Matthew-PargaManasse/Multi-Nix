@@ -47,7 +47,6 @@
     enable = true;
     clean.enable = true;
     clean.extraArgs = "--keep-since 30d --keep 5";
-    flake = "/home/mitch/Downloads/NIX_Build/Multi-Nix";
   };
 
   # System Packages
