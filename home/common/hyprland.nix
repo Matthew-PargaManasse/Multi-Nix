@@ -35,7 +35,6 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    configType = "lua";
 
     settings = {
       monitor = ",preferred,auto,1";
@@ -44,11 +43,6 @@
       env = [
         "XDG_SESSION_TYPE,wayland"
       ];
-
-      # Hyprland >v0.41 requires this instead of WLR_NO_HARDWARE_CURSORS
-      cursor = {
-        no_hardware_cursors = true;
-      };
 
       exec-once = [
         "waybar"

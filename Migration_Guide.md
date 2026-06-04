@@ -46,5 +46,14 @@ nixos-install --flake .#laptop
 ```
 Once the installation finishes, you will be prompted for a root password. Set it, then `reboot`.
 
+## 5. Keep Your Flake Updated!
+> [!WARNING]
+> Because this repository pulls from `nixos-unstable`, bleeding-edge software (like Hyprland) evolves rapidly. If your `flake.lock` file becomes outdated, older syntax (like `configType = "lua"` or `cursor` blocks) might throw **fatal evaluation errors** or cause black screens upon login.
+> 
+> Always update your lockfile if you run into parsing issues:
+> ```bash
+> nix flake update
+> ```
+
 ## Summary
 By following these steps, you are telling NixOS to use all of your custom Hyprland, ZSH, and User configurations from the flake, but replacing the underlying hardware instructions so it boots perfectly on the new SSD!

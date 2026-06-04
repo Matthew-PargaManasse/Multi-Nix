@@ -23,11 +23,12 @@
     xwayland.enable = true;
   };
 
-  # Virtualization: VirtualBox (with Extension Pack)
-  virtualisation.virtualbox.host = {
-    enable = true;
-    enableExtensionPack = true;
-  };
+  # Virtualization: VirtualBox
+  # Temporarily disabled: VirtualBox DKMS modules are known to break DRM/Wayland on bleeding edge kernels.
+  # virtualisation.virtualbox.host = {
+  #   enable = true;
+  #   enableExtensionPack = true;
+  # };
   users.extraGroups.vboxusers.members = [ "mitch" "mitch-daily" "mitch-embedded" ];
 
   # Enable CUPS to print documents.
