@@ -35,13 +35,15 @@
   ];
   services.resolved = {
     enable = true;
-    dnssec = "true";
-    domains = ["~."];
-    fallbackDns = [
-      "9.9.9.9"
-      "149.112.112.112"
-    ];
-    dnsovertls = "true";
+    settings.Resolve = {
+      DNSSEC = "true";
+      Domains = ["~."];
+      FallbackDNS = [
+        "9.9.9.9"
+        "149.112.112.112"
+      ];
+      DNSOverTLS = "true";
+    };
   };
 
   # Custom tailscale routing script from previous config

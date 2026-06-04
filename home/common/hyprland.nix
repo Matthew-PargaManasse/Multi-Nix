@@ -8,7 +8,7 @@
   home.packages = with pkgs; [
     # ML4W Hyprland Ecosystem Dependencies
     waybar
-    rofi-wayland # Replaced X11 rofi to fix Wayland compatibility and crashes
+    rofi # Replaced X11 rofi to fix Wayland compatibility and crashes
     walker
     playerctl
     swaynotificationcenter
@@ -35,6 +35,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    configType = "lua";
 
     settings = {
       monitor = ",preferred,auto,1";
@@ -379,7 +380,7 @@
   };
 
   # Configure wpaperd for dynamic timed wallpapers
-  programs.wpaperd = {
+  services.wpaperd = {
     enable = true;
     settings = {
       default = {

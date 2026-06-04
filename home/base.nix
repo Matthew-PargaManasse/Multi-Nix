@@ -31,9 +31,11 @@
 
   programs.git = {
     enable = true;
-    userName = "Matthew-PargaManasse";
-    userEmail = "LithoBreakerGB@gmail.com";
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Matthew-PargaManasse";
+        email = "LithoBreakerGB@gmail.com";
+      };
       init.defaultBranch = "main";
       safe.directory = "/etc/nixos";
     };
