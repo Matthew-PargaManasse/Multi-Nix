@@ -64,6 +64,9 @@ stdenv.mkDerivation rec {
     nss
     pango
     systemd
+    webkitgtk_4_1
+    libsoup_3
+    libsecret
     xorg.libX11
     xorg.libXcomposite
     xorg.libXdamage
