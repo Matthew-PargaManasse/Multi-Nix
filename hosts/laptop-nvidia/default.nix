@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   imports = [
@@ -19,6 +20,9 @@
     LIBVA_DRIVER_NAME = "nvidia";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   };
+
+  # SDDM on Wayland with Nvidia is notoriously broken. Force fallback to X11.
+  services.displayManager.sddm.wayland.enable = lib.mkForce false;
 
   # Graphics and Nvidia Configuration
   hardware.graphics.enable = true;
