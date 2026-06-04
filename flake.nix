@@ -66,6 +66,7 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = {inherit inputs;};
+                home-manager.backupFileExtension = "backup";
                 home-manager.users.mitch = import ./home/mitch.nix;
                 home-manager.users.mitch-daily = import ./home/mitch-daily.nix;
                 home-manager.users.mitch-embedded = import ./home/mitch-embedded.nix;
@@ -84,6 +85,7 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = {inherit inputs;};
+                home-manager.backupFileExtension = "backup";
                 home-manager.users.mitch = import ./home/mitch.nix;
                 home-manager.users.mitch-daily = import ./home/mitch-daily.nix;
                 home-manager.users.mitch-embedded = import ./home/mitch-embedded.nix;
@@ -103,6 +105,7 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = {inherit inputs;};
+                home-manager.backupFileExtension = "backup";
                 home-manager.users.mitch = import ./home/mitch.nix;
                 home-manager.users.mitch-daily = import ./home/mitch-daily.nix;
                 home-manager.users.mitch-embedded = import ./home/mitch-embedded.nix;
@@ -122,6 +125,7 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = {inherit inputs;};
+                home-manager.backupFileExtension = "backup";
                 home-manager.users.mitch = import ./home/mitch.nix;
                 home-manager.users.mitch-daily = import ./home/mitch-daily.nix;
                 home-manager.users.mitch-embedded = import ./home/mitch-embedded.nix;
