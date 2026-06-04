@@ -379,14 +379,11 @@
     };
   };
 
-  # Configure wpaperd for dynamic timed wallpapers
-  services.wpaperd = {
-    enable = true;
-    settings = {
-      default = {
-        path = "/home/mitch/wallpapers/dynamic";
-        duration = "30m";
-      };
-    };
-  };
+  # Configure wpaperd for dynamic timed wallpapers via home.file
+  # to avoid systemd Nvidia environment variable issues.
+  home.file.".config/wpaperd/wallpaper.toml".text = ''
+    [default]
+    path = "/home/mitch/wallpapers"
+    duration = "30m"
+  '';
 }
