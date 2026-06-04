@@ -9,13 +9,30 @@
     ../../modules/nixos/desktop.nix
   ];
 
-  networking.hostName = "laptop";
+  networking.hostName = "laptop-nvidia";
 
   # LUKS Encryption (Uncomment and replace FILLER-UUID if using LUKS)
   # boot.initrd.luks.devices."luks-FILLER-UUID".device = "/dev/disk/by-uuid/FILLER-UUID";
 
-  # Graphics Configuration (Intel native drivers automatically loaded)
+  # Global Wayland Environment Variables for Nvidia
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "nvidia";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+  };
+
+  # Graphics and Nvidia Configuration
   hardware.graphics.enable = true;
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = true;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
+    prime = {
+      sync.enable = true;
+      nvidiaBusId = "PCI:1:0:0";
+      amdgpuBusId = "PCI:5:0:0";
+    };
+  };
 
   # Network specific options
   networking.nameservers = [

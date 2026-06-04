@@ -40,11 +40,9 @@
     settings = {
       monitor = ",preferred,auto,1";
 
-      # Essential environment variables for Hyprland + Nvidia
+      # Essential Wayland environment variables (Hardware Agnostic)
       env = [
-        "LIBVA_DRIVER_NAME,nvidia"
         "XDG_SESSION_TYPE,wayland"
-        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
       ];
 
       # Hyprland >v0.41 requires this instead of WLR_NO_HARDWARE_CURSORS

@@ -74,6 +74,25 @@
             ];
           };
 
+          laptop-nvidia = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = {inherit inputs;};
+            modules = [
+              inputs.stylix.nixosModules.stylix
+              ./hosts/laptop-nvidia/default.nix
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.extraSpecialArgs = {inherit inputs;};
+                home-manager.backupFileExtension = "backup";
+                home-manager.users.mitch = import ./home/mitch.nix;
+                home-manager.users.mitch-daily = import ./home/mitch-daily.nix;
+                home-manager.users.mitch-embedded = import ./home/mitch-embedded.nix;
+              }
+            ];
+          };
+
           desktop = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = {inherit inputs;};
