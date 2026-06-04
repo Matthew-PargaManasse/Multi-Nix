@@ -7,7 +7,7 @@ let
   sources = {
     "x86_64-linux" = {
       url = "https://storage.googleapis.com/antigravity-public/antigravity-hub/2.0.11-6560309696135168/linux-x64/Antigravity.tar.gz";
-      hash = lib.fakeHash;
+      hash = "sha256-obK1vw3l9DBMKYl/gappy4xW6KKVcKliuVOH68cr2VE=";
     };
     "aarch64-linux" = {
       url = "https://storage.googleapis.com/antigravity-public/antigravity-hub/2.0.11-6560309696135168/linux-arm/Antigravity.tar.gz";
