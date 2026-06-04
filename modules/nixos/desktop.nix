@@ -87,4 +87,16 @@
     layout = "us";
     variant = "";
   };
+
+  # Enterprise policies to harden Brave and remove bloatware (Wallet, Leo AI, etc.)
+  environment.etc."brave/policies/managed/extra.json".text = builtins.toJSON {
+    BraveWalletDisabled = true;
+    BraveRewardsDisabled = true;
+    BraveAIChatEnabled = false;
+    BraveVPNDisabled = true;
+    BraveNewsDisabled = true;
+    BraveTalkDisabled = true;
+    BackgroundModeEnabled = false;
+    MetricsReportingEnabled = false;
+  };
 }
