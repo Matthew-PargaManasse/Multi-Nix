@@ -41,10 +41,6 @@
   stylix.image = ../../wallpapers/ml4w_tokyonight.png;
   stylix.polarity = "dark";
   
-  # Disable Stylix wallpaper engines so wpaperd can handle dynamic backgrounds without conflicting
-  stylix.targets.hyprland.hyprpaper.enable = false;
-  stylix.targets.swaybg.enable = false;
-  
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
   stylix.fonts = {
     serif = {

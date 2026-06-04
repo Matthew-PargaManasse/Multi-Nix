@@ -25,6 +25,9 @@
     cliphist
   ];
 
+  # Force disable Hyprpaper so Stylix doesn't fight wpaperd for the background
+  services.hyprpaper.enable = lib.mkForce false;
+
   wayland.windowManager.hyprland = {
     enable = true;
 
