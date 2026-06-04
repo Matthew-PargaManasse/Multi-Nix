@@ -8,7 +8,7 @@
   home.packages = with pkgs; [
     # ML4W Hyprland Ecosystem Dependencies
     waybar
-    pkgs.rofi # Kept for dmenu functionality with cliphist
+    rofi-wayland # Replaced X11 rofi to fix Wayland compatibility and crashes
     walker
     playerctl
     swaynotificationcenter
@@ -25,7 +25,12 @@
     cliphist
   ];
 
-  # Force disable Hyprpaper so Stylix doesn't fight wpaperd for the background
+  # Disable Stylix from forcefully overwriting our manual configs
+  stylix.targets.hyprland.enable = false;
+  stylix.targets.waybar.enable = false;
+  stylix.targets.rofi.enable = false;
+  
+  # Force disable Hyprpaper service
   services.hyprpaper.enable = lib.mkForce false;
 
   wayland.windowManager.hyprland = {
@@ -34,8 +39,18 @@
     settings = {
       monitor = ",preferred,auto,1";
 
+      # Essential environment variables for Hyprland + Nvidia + Kitty
+      env = [
+        "LIBVA_DRIVER_NAME,nvidia"
+        "XDG_SESSION_TYPE,wayland"
+        "GBM_BACKEND,nvidia-drm"
+        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        "WLR_NO_HARDWARE_CURSORS,1"
+      ];
+
       exec-once = [
         "waybar"
+        "wpaperd -d"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
       ];
