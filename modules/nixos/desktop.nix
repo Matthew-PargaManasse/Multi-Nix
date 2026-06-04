@@ -9,6 +9,11 @@
   services.displayManager.sddm.wayland.enable = true;
   services.displayManager.sddm.package = pkgs.kdePackages.sddm;
   services.displayManager.sddm.theme = "sddm-astronaut-theme";
+  services.displayManager.sddm.extraPackages = with pkgs.kdePackages; [
+    qtsvg
+    qtmultimedia
+    qtvirtualkeyboard
+  ];
 
   # Window Manager: Hyprland
   programs.hyprland = {

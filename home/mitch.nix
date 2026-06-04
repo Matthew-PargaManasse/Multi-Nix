@@ -42,7 +42,6 @@
     wireshark
     
     # --- Wireless Attacks ---
-    aircrack-ng
     hcxdumptool
     hcxtools
     wifite2
@@ -63,11 +62,9 @@
     
     # --- Exploitation & Sniffing ---
     bettercap
-    ligolo-ng
     responder
     
     # --- Passwords & Wordlists ---
-    crunch
     wordlists
     
     # --- Additional Protocols & Scanners ---
@@ -79,6 +76,7 @@
     # Utilities
     gparted
     kdePackages.dolphin
+    (pkgs.callPackage ../pkgs/antigravity/default.nix {})
     
     # IDEs / Dev
     (vscode-with-extensions.override {
