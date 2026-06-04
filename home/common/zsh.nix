@@ -9,7 +9,7 @@
     autosuggestion.enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
-    initExtra = ''
+    initContent = ''
       fastfetch
     '';
 
@@ -17,7 +17,7 @@
       ls = "eza --icons";
       ll = "eza -lh --icons";
       lah = "eza -lah --icons";
-      update = "sudo nix flake update && sudo nixos-rebuild switch --flake ./#nixos";
+      update = "sudo nix flake update && sudo nixos-rebuild switch --flake ./#$(hostname)";
       cat = "bat";
       cd = "z";
     };
@@ -58,6 +58,7 @@
   programs.yazi = {
     enable = true;
     enableZshIntegration = true;
+    shellWrapperName = "y";
   };
 
   # Override Yazi's desktop file so Rofi launches it with a larger font in Kitty

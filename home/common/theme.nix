@@ -11,7 +11,7 @@
     # theme is managed by Stylix (dynamic wallpaper-based colors)
     iconTheme = {
       name = lib.mkForce "Tokyonight-Dark";
-      package = pkgs.tokyo-night-gtk;
+      package = pkgs.tokyonight-gtk-theme;
     };
     cursorTheme = {
       name = lib.mkForce "Bibata-Modern-Ice";

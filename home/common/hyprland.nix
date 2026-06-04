@@ -8,7 +8,7 @@
   home.packages = with pkgs; [
     # ML4W Hyprland Ecosystem Dependencies
     waybar
-    rofi-wayland # Kept for dmenu functionality with cliphist
+    pkgs.rofi # Kept for dmenu functionality with cliphist
     walker
     playerctl
     swaynotificationcenter
