@@ -12,8 +12,11 @@ Multi-Nix/
 │
 ├── hosts/                     <-- DEVICE SPECIFIC CONFIGURATIONS (The Hardware Layer)
 │   ├── laptop/
-│   │   ├── default.nix        <-- Laptop Host settings (hostname, imports desktop GUI)
-│   │   └── hardware-configuration.nix <-- LUKS UUIDs, kernel modules, filesystem
+│   │   ├── default.nix        <-- Intel-only Laptop Host (open-source native drivers)
+│   │   └── hardware-configuration.nix <-- Hardware profiles, LUKS UUIDs, filesystems
+│   ├── laptop-nvidia/
+│   │   ├── default.nix        <-- Hybrid Nvidia/AMD Laptop Host (proprietary drivers, prime)
+│   │   └── hardware-configuration.nix 
 │   ├── rpi4/
 │   │   └── default.nix        <-- Raspberry Pi Host settings (minimal, no GUI)
 │   └── macos/

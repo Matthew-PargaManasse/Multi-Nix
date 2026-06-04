@@ -25,10 +25,14 @@ As you update your `.nix` configuration files, remember to update this document 
 ### Window Management
 | Shortcut | Action |
 |---|---|
+| `SUPER` + `F` | Toggle Fullscreen (Hides Waybar) |
+| `SUPER` + `Shift` + `F` | Maximize window (Keeps Waybar visible) |
+| `Alt` + `Tab` | Cycle through windows (Alt-Tab style) |
 | `SUPER` + `Shift` + `Space` | Toggle floating mode for active window |
 | `SUPER` + `P` | Toggle Pseudo-tiling |
 | `SUPER` + `J` | Toggle window split layout |
 | `SUPER` + `Left/Right/Up/Down` | Move focus between windows |
+| `SUPER` + `Shift` + `Left/Right/Up/Down` | Move active window around the screen |
 | `SUPER` + `Left Click (Hold)` | Move floating window |
 | `SUPER` + `Right Click (Hold)`| Resize floating window |
 
