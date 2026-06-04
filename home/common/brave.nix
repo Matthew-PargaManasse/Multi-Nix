@@ -15,5 +15,9 @@
       {id = "ghmbeldphafepmbegfdlkpapadhbakde";} # Tokyo Theme?
       {id = "gcbommkclmclpchllfjekcdonpmejbdp";} # https everywhere
     ];
+    
+    commandLineArgs = [
+      "--password-store=basic" # Disables the KDE Wallet / Keyring popup
+    ];
   };
 }
