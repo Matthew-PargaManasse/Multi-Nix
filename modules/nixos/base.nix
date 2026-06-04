@@ -86,8 +86,6 @@
     font-awesome
   ];
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
   # Enable Firmware updates
   services.fwupd.enable = true;
 
