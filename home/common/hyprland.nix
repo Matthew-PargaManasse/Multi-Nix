@@ -62,10 +62,6 @@
         layout = "dwindle";
       };
 
-      # Disable Explicit Sync (Fixes instant crash on Intel UHD 620 with Hyprland 0.41+)
-      render = {
-        explicit_sync = 0;
-      };
 
       # ML4W Decoration (Blur, Rounded Corners, Transparency)
       decoration = {
