@@ -56,12 +56,7 @@
   };
   networking.firewall.checkReversePath = "loose";
 
-  # Nix garbage collection
-  nix.gc = {
-    automatic = true;
-    dates = "03:15";
-    options = "-delete-older-than 30d";
-  };
+  # Nix garbage collection (managed by nh now)
   nix.optimise.automatic = true;
 
   # Power Management

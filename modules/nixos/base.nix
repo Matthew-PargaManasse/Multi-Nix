@@ -41,6 +41,14 @@
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Enable nh (Nix Helper)
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 30d --keep 5";
+    flake = "/home/mitch/Downloads/NIX_Build/Multi-Nix";
+  };
+
   # System Packages
   environment.systemPackages = with pkgs; [
     vim
