@@ -89,11 +89,13 @@
     spotify
     sddm-astronaut
     seahorse # GUI for managing the keyring
+    xdg-utils # Required for opening URLs (like OAuth login)
   ];
 
   # Enable GNOME Keyring for saving passwords (fixes Antigravity IDE logging out)
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.sddm.enableGnomeKeyring = true;
+  security.pam.services.sddm.enableKwallet = lib.mkForce false; # Prevent KWallet from hijacking the secret service
 
   # Configure keymap in X11
   services.xserver.xkb = {
