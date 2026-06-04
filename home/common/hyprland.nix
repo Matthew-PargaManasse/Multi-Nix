@@ -131,11 +131,23 @@
         ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
         ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
 
-        # Navigation
+        # Window State
+        "$mainMod, F, fullscreen, 0" # True fullscreen (hides Waybar)
+        "$mainMod SHIFT, F, fullscreen, 1" # Maximize (keeps Waybar visible)
+        "ALT, Tab, cyclenext, " # Alt-Tab equivalent
+        "ALT, Tab, bringactivetotop, "
+
+        # Navigation (Focus)
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
         "$mainMod, down, movefocus, d"
+
+        # Moving Windows (Keyboard)
+        "$mainMod SHIFT, left, movewindow, l"
+        "$mainMod SHIFT, right, movewindow, r"
+        "$mainMod SHIFT, up, movewindow, u"
+        "$mainMod SHIFT, down, movewindow, d"
 
         # Workspaces
         "$mainMod, 1, workspace, 1"
