@@ -23,6 +23,13 @@
     xwayland.enable = true;
   };
 
+  # Virtualization: VirtualBox (with Extension Pack)
+  virtualisation.virtualbox.host = {
+    enable = true;
+    enableExtensionPack = true;
+  };
+  users.extraGroups.vboxusers.members = [ "mitch" "mitch-daily" "mitch-embedded" ];
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 

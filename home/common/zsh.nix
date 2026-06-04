@@ -71,7 +71,5 @@
     icon = "system-file-manager";
   };
 
-  home.packages = with pkgs; [
-    fastfetch
-  ];
+
 }

@@ -63,7 +63,7 @@
     fping
     git
     lshw
-    mlocate
+    plocate
     netcat-openbsd
     netdiscover
     networkmanagerapplet

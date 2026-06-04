@@ -21,8 +21,7 @@
     bat
     btop
     dunst
-    unetbootin
-    wget
+    ventoy-bin
     brave
     burpsuite
     kdePackages.dolphin
@@ -34,8 +33,7 @@
     gimp
     kitty
     metasploit
-    mlocate
-    fastfetch
+    plocate
     obsidian
     pipewire
     pkg-config
@@ -48,8 +46,6 @@
     terminator
     thunderbird
     virt-viewer
-    virtualbox
-    virtualboxWithExtpack
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
         bbenoist.nix
@@ -58,15 +54,11 @@
         redhat.vscode-yaml
       ];
     })
-    font-awesome
-    font-awesome_4
-    font-awesome_5
     tokyonight-gtk-theme
     haskellPackages.font-awesome-type
     gnome-tweaks
     gparted
     libsForQt5.qt5ct
-    waybar
   ];
 
   home.file = {};
