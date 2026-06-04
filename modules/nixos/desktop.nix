@@ -95,7 +95,7 @@
   # Enable GNOME Keyring for saving passwords (fixes Antigravity IDE logging out)
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.sddm.enableGnomeKeyring = true;
-  security.pam.services.sddm.enableKwallet = pkgs.lib.mkForce false; # Prevent KWallet from hijacking the secret service
+  security.pam.services.sddm.kwallet.enable = pkgs.lib.mkForce false; # Prevent KWallet from hijacking the secret service
 
   # Configure keymap in X11
   services.xserver.xkb = {
