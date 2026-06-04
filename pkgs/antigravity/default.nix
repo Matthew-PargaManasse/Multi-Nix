@@ -73,15 +73,15 @@ in
       nss
       pango
       systemd
-      xorg.libX11
-      xorg.libXcomposite
-      xorg.libXdamage
-      xorg.libXext
-      xorg.libXfixes
-      xorg.libXrandr
-      xorg.libxcb
-      xorg.libxkbfile
-      xorg.libxshmfence
+      libX11
+      libXcomposite
+      libXdamage
+      libXext
+      libXfixes
+      libXrandr
+      libxcb
+      libxkbfile
+      libxshmfence
     ]);
 
     # Unpack logic differs between Linux (.tar.gz) and Darwin (.dmg)

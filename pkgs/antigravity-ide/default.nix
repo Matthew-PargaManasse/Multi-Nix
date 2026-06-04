@@ -75,15 +75,15 @@ in
       webkitgtk_4_1
       libsoup_3
       libsecret
-      xorg.libX11
-      xorg.libXcomposite
-      xorg.libXdamage
-      xorg.libXext
-      xorg.libXfixes
-      xorg.libXrandr
-      xorg.libxcb
-      xorg.libxkbfile
-      xorg.libxshmfence
+      libX11
+      libXcomposite
+      libXdamage
+      libXext
+      libXfixes
+      libXrandr
+      libxcb
+      libxkbfile
+      libxshmfence
     ]);
 
     unpackPhase = ''

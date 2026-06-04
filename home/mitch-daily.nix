@@ -15,7 +15,7 @@
   home.packages = with pkgs; [
     # Privacy and Comms
     protonmail-bridge
-    protonvpn-gui
+    proton-vpn
     signal-desktop
     element-desktop
     slack
