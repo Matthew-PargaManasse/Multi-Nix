@@ -80,7 +80,12 @@
     wl-clipboard
     spotify
     sddm-astronaut
+    seahorse # GUI for managing the keyring
   ];
+
+  # Enable GNOME Keyring for saving passwords (fixes Antigravity IDE logging out)
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.sddm.enableGnomeKeyring = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
