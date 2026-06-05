@@ -40,8 +40,6 @@
   services.openssh.enable = true;
   services.tailscale.enable = true;
 
-  # DBus Configuration (Use broker to prevent switch hangs)
-  services.dbus.implementation = "broker";
 
   # Enable flakes
   nix.settings.experimental-features = ["nix-command" "flakes"];
