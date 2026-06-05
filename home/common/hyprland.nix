@@ -322,6 +322,41 @@
   # Configure Wlogout
   programs.wlogout = {
     enable = true;
+    style = ''
+      * {
+        font-family: "MesloLGS Nerd Font Mono", "Font Awesome 5 Free";
+        background-image: none;
+        transition: 20s;
+      }
+
+      window {
+        background-color: rgba(30, 30, 46, 0.6); /* 60% opacity background */
+      }
+
+      button {
+        color: #cdd6f4;
+        background-color: rgba(49, 50, 68, 0.6);
+        border: 4px solid #89b4fa; /* Bold border */
+        border-radius: 20px;
+        margin: 20px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 25%;
+      }
+
+      button:focus, button:active, button:hover {
+        background-color: rgba(137, 180, 250, 0.4);
+        border: 4px solid #b4befe;
+        outline-style: none;
+      }
+
+      #lock { background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/lock.png")); }
+      #logout { background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/logout.png")); }
+      #suspend { background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/suspend.png")); }
+      #hibernate { background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/hibernate.png")); }
+      #shutdown { background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/shutdown.png")); }
+      #reboot { background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/reboot.png")); }
+    '';
     layout = [
       {
         label = "lock";
