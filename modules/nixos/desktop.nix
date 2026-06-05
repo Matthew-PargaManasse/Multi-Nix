@@ -100,7 +100,11 @@
     xdg-utils # Required for opening URLs (like OAuth login)
   ];
 
-  # Note: GNOME Keyring removed due to SDDM PAM freeze on login
+  # Note: GNOME Keyring PAM integration is omitted to avoid the SDDM freeze.
+  # A polkit authentication agent is launched in hyprland.nix instead, so the user
+  # will just see a safe graphical prompt to unlock their keyring when needed.
+  services.gnome.gnome-keyring.enable = true;
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";

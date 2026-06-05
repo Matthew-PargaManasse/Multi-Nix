@@ -23,6 +23,7 @@
 
     # QoL Tools
     cliphist
+    polkit_gnome
   ];
 
   # Disable Stylix from forcefully overwriting our manual configs
@@ -50,6 +51,7 @@
         "wpaperd -d"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
+        "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
       ];
 
       # ML4W Style General Settings
