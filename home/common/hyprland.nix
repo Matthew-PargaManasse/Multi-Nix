@@ -122,12 +122,6 @@
         "$mainMod, P, pseudo, "
         "$mainMod, J, layoutmsg, togglesplit"
 
-        # Media controls
-        ", XF86AudioRaiseVolume, exec, pamixer -i 5"
-        ", XF86AudioLowerVolume, exec, pamixer -d 5"
-        ", XF86AudioMute, exec, pamixer -t"
-        ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
-        ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
 
         # Window State
         "$mainMod, F, fullscreen, 0" # True fullscreen (hides Waybar)
@@ -172,7 +166,16 @@
         "$mainMod SHIFT, 0, movetoworkspace, 10"
 
         # Screenshot bindings
-        ", Print, exec, grim -g \"$(slurp)\" - | swappy -f -"
+        ", Print, exec, sh -c 'grim -g \"$(slurp)\" - | swappy -f -'"
+      ];
+
+      bindel = [
+        # Media controls (e = repeat, l = works when locked)
+        ", XF86AudioRaiseVolume, exec, pamixer -i 5"
+        ", XF86AudioLowerVolume, exec, pamixer -d 5"
+        ", XF86AudioMute, exec, pamixer -t"
+        ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
+        ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
       ];
 
       bindm = [
