@@ -11,6 +11,7 @@
   services.displayManager.sddm.wayland.enable = false; # Fallback to X11 to fix Wayland SDDM crashes on Intel UHD 620
   services.displayManager.sddm.package = pkgs.kdePackages.sddm;
   services.displayManager.sddm.theme = "sddm-astronaut-theme";
+  services.displayManager.defaultSession = "hyprland";
   services.displayManager.sddm.extraPackages = with pkgs.kdePackages; [
     qtsvg
     qtmultimedia
