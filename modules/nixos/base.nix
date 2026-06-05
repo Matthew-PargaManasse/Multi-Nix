@@ -53,10 +53,7 @@
 
   # System Packages
   environment.systemPackages = with pkgs; [
-    vim
-    wget
-    zsh
-    home-manager
+    # Existing packages
     arp-scan
     blueman
     brightnessctl
@@ -64,17 +61,39 @@
     ethtool
     fping
     git
+    home-manager
     lshw
-    plocate
     netcat-openbsd
     netdiscover
     networkmanagerapplet
     pciutils
+    plocate
     python3
-    uv
     tailscale
     unzip
     usbutils
+    uv
+    vim
+    wget
+    zsh
+
+    # Common Ubuntu/Standard Linux Utilities
+    dnsutils # provides dig, nslookup
+    curl
+    file
+    htop
+    jq
+    psmisc # provides killall
+    lm_sensors # provides sensors
+    lsof
+    nmap
+    rsync
+    socat
+    strace
+    sysstat
+    tcpdump
+    tmux
+    tree
   ];
 
   environment.variables.EDITOR = "nvim";
