@@ -35,6 +35,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    configType = "hyprlang"; # Force traditional parsing, as bleeding-edge Home Manager defaults to experimental 'lua'
 
     settings = {
       monitor = ",preferred,auto,1";
