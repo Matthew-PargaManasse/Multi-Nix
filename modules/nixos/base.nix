@@ -78,10 +78,8 @@
     zsh
 
     # Common Ubuntu/Standard Linux Utilities
-    dnsutils # provides dig, nslookup
     curl
     file
-    htop
     jq
     psmisc # provides killall
     lm_sensors # provides sensors
@@ -92,8 +90,16 @@
     strace
     sysstat
     tcpdump
-    tmux
     tree
+
+    # Modern Rust/Go CLI Replacements
+    doggo # replaces dnsutils/dig
+    duf # replaces df
+    dust # replaces du
+    fd # replaces find
+    procs # replaces ps
+    tealdeer # fast tldr client
+    zellij # replaces tmux
   ];
 
   environment.variables.EDITOR = "nvim";
