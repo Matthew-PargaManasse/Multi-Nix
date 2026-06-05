@@ -9,7 +9,8 @@
     autosuggestion.enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
-    initExtra = ''
+    initContent = ''
+      # Fastfetch on shell start
       fastfetch
 
       # Modern CLI Intercepts
