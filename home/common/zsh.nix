@@ -19,6 +19,7 @@
       function find() { echo -e "\033[1;33m[Notice]\033[0m Running modern equivalent \033[1;32mfd\033[0m instead of find..."; fd "$@"; }
       function ps() { echo -e "\033[1;33m[Notice]\033[0m Running modern equivalent \033[1;32mprocs\033[0m instead of ps..."; procs "$@"; }
       function dig() { echo -e "\033[1;33m[Notice]\033[0m Running modern equivalent \033[1;32mdoggo\033[0m instead of dig..."; doggo "$@"; }
+      function man() { echo -e "\033[1;33m[Notice]\033[0m Running modern equivalent \033[1;32mtealdeer (tldr)\033[0m instead of man..."; tldr "$@"; }
     '';
 
     shellAliases = {
