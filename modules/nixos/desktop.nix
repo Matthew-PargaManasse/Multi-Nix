@@ -23,6 +23,12 @@
     xwayland.enable = true;
   };
 
+  # Essential Wayland/Hyprland Desktop Environment Services
+  security.polkit.enable = true;
+  services.upower.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+
   # Virtualization: VirtualBox
   # Temporarily disabled: VirtualBox DKMS modules are known to break DRM/Wayland on bleeding edge kernels.
   # virtualisation.virtualbox.host = {
