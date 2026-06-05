@@ -9,7 +9,7 @@
     autosuggestion.enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
-    initContent = ''
+    initExtra = ''
       fastfetch
     '';
 
@@ -70,6 +70,10 @@
     categories = ["Utility" "Core" "System" "FileTools" "FileManager"];
     icon = "system-file-manager";
   };
+
+  home.packages = with pkgs; [
+    fastfetch
+  ];
 
 
 }
