@@ -11,6 +11,14 @@
     syntaxHighlighting.enable = true;
     initExtra = ''
       fastfetch
+
+      # Modern CLI Intercepts
+      function tmux() { echo -e "\033[1;33m[Notice]\033[0m Running modern equivalent \033[1;32mzellij\033[0m instead of tmux..."; zellij "$@"; }
+      function du() { echo -e "\033[1;33m[Notice]\033[0m Running modern equivalent \033[1;32mdust\033[0m instead of du..."; dust "$@"; }
+      function df() { echo -e "\033[1;33m[Notice]\033[0m Running modern equivalent \033[1;32mduf\033[0m instead of df..."; duf "$@"; }
+      function find() { echo -e "\033[1;33m[Notice]\033[0m Running modern equivalent \033[1;32mfd\033[0m instead of find..."; fd "$@"; }
+      function ps() { echo -e "\033[1;33m[Notice]\033[0m Running modern equivalent \033[1;32mprocs\033[0m instead of ps..."; procs "$@"; }
+      function dig() { echo -e "\033[1;33m[Notice]\033[0m Running modern equivalent \033[1;32mdoggo\033[0m instead of dig..."; doggo "$@"; }
     '';
 
     shellAliases = {
