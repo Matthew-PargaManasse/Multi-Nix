@@ -39,8 +39,8 @@
       # Source dynamic colors from Wallust BEFORE using them
       source = ~/.config/wallust/hyprland-colors.conf
       
-      monitor=eDP-1,preferred,auto-right,1
-      monitor=,preferred,auto,1
+      monitor=eDP-1,preferred,auto,1
+      monitor=,preferred,auto-left,1
 
       # Define border colors here so they evaluate AFTER the source
       general {
