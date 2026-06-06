@@ -6,8 +6,9 @@
 
   home.file.".config/wallust/wallust.toml".text = ''
     backend = "fastresize"
-    color_space = "lab"
+    color_space = "lch"
     palette = "dark16"
+    check_contrast = true
     
     [templates.waybar]
     template = "waybar.css"
@@ -86,8 +87,9 @@
         # Generate colors with wallust
         wallust run "$WALLPAPER"
         
-        # Reload Waybar to apply new colors
-        killall -SIGUSR2 waybar
+        # Restart Waybar to apply new colors safely (SIGUSR2 is unstable and causes crashes)
+        killall waybar
+        waybar &
         
         # Force Hyprland to reload config to pick up new colors
         hyprctl reload
