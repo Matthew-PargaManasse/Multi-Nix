@@ -12,8 +12,22 @@
     walker
     playerctl
     swaynotificationcenter
-    wlogout
+    hyprpaper
     swayosd
+    (pkgs.writeShellScriptBin "wlogout-centered" ''
+      # Get the resolution of the currently focused monitor
+      WIDTH=$(hyprctl monitors -j | jq -r '.[] | select(.focused) | .width')
+      HEIGHT=$(hyprctl monitors -j | jq -r '.[] | select(.focused) | .height')
+      
+      # Calculate margins to confine the grid to the center 1/3 horizontally, and 1/2 vertically
+      MARGIN_L=$(( WIDTH / 3 ))
+      MARGIN_R=$(( WIDTH / 3 ))
+      MARGIN_T=$(( HEIGHT / 4 ))
+      MARGIN_B=$(( HEIGHT / 4 ))
+      
+      # Launch wlogout with calculated grid margins
+      wlogout -b 6 -L $MARGIN_L -R $MARGIN_R -T $MARGIN_T -B $MARGIN_B
+    '')
 
     # Screenshot utilities
     grim
@@ -127,7 +141,7 @@
         "$mainMod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
         "$mainMod, Tab, exec, rofi -show window"
         "$mainMod, Space, exec, rofi -show drun -show-icons"
-        "$mainMod, Escape, exec, wlogout"
+        "$mainMod, Escape, exec, wlogout-centered"
         "$mainMod, P, pseudo, "
         "$mainMod, J, layoutmsg, togglesplit"
 
@@ -297,7 +311,7 @@
 
         "custom/power" = {
           format = "⏻";
-          on-click = "wlogout";
+          on-click = "wlogout-centered";
           tooltip = false;
         };
 
@@ -378,10 +392,10 @@
         background-color: @color0_alpha;
         border: 4px solid @color4; /* Bold border */
         border-radius: 20px;
-        margin: 150px 200px; /* Large margins to constrain buttons to center 1/3 on 1080p */
+        margin: 10px; /* Small gap between buttons, major spacing handled by wrapper script */
         background-repeat: no-repeat;
         background-position: center;
-        background-size: 35%;
+        background-size: 50%; /* Make logos fill 50% of the newly constrained boxes */
       }
 
       button:focus, button:active, button:hover {
