@@ -77,6 +77,7 @@
     vim
     wget
     zsh
+    moonlight-qt
 
     # Common Ubuntu/Standard Linux Utilities
     curl

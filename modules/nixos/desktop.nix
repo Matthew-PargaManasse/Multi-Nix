@@ -31,6 +31,17 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
+  # Sunshine GameStream (Remote Desktop over Tailscale)
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true; # Required for Wayland/KMS screen capture
+    openFirewall = false; # We purposefully DO NOT open the firewall to the public internet!
+  };
+
+  # Trust the Tailscale interface for all ports so we can access Sunshine securely
+  networking.firewall.trustedInterfaces = [ "tailscale0" ];
+
   # Virtualization: VirtualBox
   # Temporarily disabled: VirtualBox DKMS modules are known to break DRM/Wayland on bleeding edge kernels.
   # virtualisation.virtualbox.host = {
