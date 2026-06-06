@@ -72,7 +72,6 @@
       ];
 
       exec-once = [
-        "waybar"
         "~/.config/hypr/wallpaper-daemon.sh &"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
