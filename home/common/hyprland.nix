@@ -41,16 +41,6 @@
       
       monitor=eDP-1,preferred,auto-right,1
       monitor=,preferred,auto,1
-      
-      # For virt-manager
-      windowrulev2 = float, class:^(virt-manager)$
-      windowrulev2 = size 1280 720, class:^(virt-manager)$
-      windowrulev2 = center, class:^(virt-manager)$
-
-      # For Steam
-      windowrulev2 = float, class:^(Steam)$
-      windowrulev2 = size 1280 720, class:^(Steam)$
-      windowrulev2 = center, class:^(Steam)$
 
       # Define border colors here so they evaluate AFTER the source
       general {
@@ -120,11 +110,21 @@
           "fade, 1, 7, default"
           "workspaces, 1, 6, default"
         ];
+
       };
 
       dwindle = {
         preserve_split = true;
       };
+
+      windowrulev2 = [
+        "float, class:^(virt-manager)$"
+        "size 1280 720, class:^(virt-manager)$"
+        "center, class:^(virt-manager)$"
+        "float, class:^(Steam)$"
+        "size 1280 720, class:^(Steam)$"
+        "center, class:^(Steam)$"
+      ];
 
       master = {
       };

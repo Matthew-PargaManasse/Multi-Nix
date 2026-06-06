@@ -7,15 +7,37 @@
 }: {
   gtk = {
     enable = true;
-    gtk3.extraConfig.gtk-decoration-layout = "menu:";
-    # theme is managed by Stylix (dynamic wallpaper-based colors)
-    iconTheme = {
-      name = lib.mkForce "Tokyonight-Dark";
+    
+    theme = {
+      name = "Tokyonight-Dark-B";
       package = pkgs.tokyonight-gtk-theme;
     };
+
+    gtk3.extraConfig = {
+      gtk-decoration-layout = "menu:";
+      gtk-application-prefer-dark-theme = 1;
+    };
+    
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+
+    iconTheme = {
+      name = "Tokyonight-Dark";
+      package = pkgs.tokyonight-gtk-theme;
+    };
+    
     cursorTheme = {
-      name = lib.mkForce "Bibata-Modern-Ice";
+      name = "Bibata-Modern-Ice";
       package = pkgs.bibata-cursors;
     };
+  };
+
+  home.pointerCursor = {
+    name = "Bibata-Modern-Ice";
+    package = pkgs.bibata-cursors;
+    size = 24;
+    gtk.enable = true;
+    x11.enable = true;
   };
 }
