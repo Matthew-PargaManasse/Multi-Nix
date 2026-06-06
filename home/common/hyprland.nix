@@ -30,6 +30,9 @@
   # Force disable Hyprpaper service
   services.hyprpaper.enable = lib.mkForce false;
 
+  # Enable swayosd for OSD indicators
+  services.swayosd.enable = true;
+
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -58,7 +61,6 @@
       exec-once = [
         "waybar"
         "~/.config/hypr/wallpaper-daemon.sh &"
-        "swayosd-server"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
