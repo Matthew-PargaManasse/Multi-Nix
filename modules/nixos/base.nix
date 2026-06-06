@@ -39,6 +39,7 @@
   # Essential services
   services.openssh.enable = true;
   services.tailscale.enable = true;
+  networking.firewall.checkReversePath = "loose"; # Required for Tailscale
   services.dbus.implementation = "broker";
 
 
