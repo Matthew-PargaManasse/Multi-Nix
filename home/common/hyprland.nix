@@ -378,10 +378,10 @@
         background-color: @color0_alpha;
         border: 4px solid @color4; /* Bold border */
         border-radius: 20px;
-        margin: 120px 40px; /* Increased margin to physically shrink the buttons by ~half */
+        margin: 150px 200px; /* Large margins to constrain buttons to center 1/3 on 1080p */
         background-repeat: no-repeat;
         background-position: center;
-        background-size: 25%;
+        background-size: 35%;
       }
 
       button:focus, button:active, button:hover {
