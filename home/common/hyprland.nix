@@ -272,7 +272,7 @@
         position = "top";
         height = 30;
         spacing = 4;
-        modules-left = ["custom/launcher" "hyprland/workspaces" "hyprland/window"];
+        modules-left = ["custom/launcher" "hyprland/workspaces" "custom/power"];
         modules-center = ["cpu" "memory" "battery" "network#traffic"];
         modules-right = ["wlr/taskbar" "tray" "mpris" "network" "clock"];
 
