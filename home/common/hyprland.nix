@@ -117,15 +117,6 @@
         preserve_split = true;
       };
 
-      windowrulev2 = [
-        "float, class:^(virt-manager)$"
-        "size 1280 720, class:^(virt-manager)$"
-        "center, class:^(virt-manager)$"
-        "float, class:^(Steam)$"
-        "size 1280 720, class:^(Steam)$"
-        "center, class:^(Steam)$"
-      ];
-
       master = {
       };
 

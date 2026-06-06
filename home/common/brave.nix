@@ -18,6 +18,7 @@
     
     commandLineArgs = [
       "--password-store=basic" # Disables the KDE Wallet / Keyring popup
+      "--force-dark-mode"      # Forces dark mode since Stylix is removed
     ];
   };
 }
