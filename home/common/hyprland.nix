@@ -36,21 +36,27 @@
     configType = "hyprlang"; # Force traditional parsing, as bleeding-edge Home Manager defaults to experimental 'lua'
 
     extraConfig = ''
-      # Source dynamic colors from Wallust
+      # Source dynamic colors from Wallust BEFORE using them
       source = ~/.config/wallust/hyprland-colors.conf
       
       monitor=eDP-1,preferred,auto-right,1
       monitor=,preferred,auto,1
       
       # For virt-manager
-      windowrule=float,^(virt-manager)$
-      windowrule=size 1280 720,^(virt-manager)$
-      windowrule=center,^(virt-manager)$
+      windowrulev2 = float, class:^(virt-manager)$
+      windowrulev2 = size 1280 720, class:^(virt-manager)$
+      windowrulev2 = center, class:^(virt-manager)$
 
       # For Steam
-      windowrule=float,^(Steam)$
-      windowrule=size 1280 720,^(Steam)$
-      windowrule=center,^(Steam)$
+      windowrulev2 = float, class:^(Steam)$
+      windowrulev2 = size 1280 720, class:^(Steam)$
+      windowrulev2 = center, class:^(Steam)$
+
+      # Define border colors here so they evaluate AFTER the source
+      general {
+        col.active_border = $color2 $color4 45deg
+        col.inactive_border = $background
+      }
     '';
 
     settings = {
@@ -70,17 +76,13 @@
         "nm-applet --indicator"
       ];
 
-        render = {
-          explicit_sync = 0;
-        };
+
 
       # ML4W Style General Settings
       general = {
         gaps_in = 3;
         gaps_out = 1;
         border_size = 2;
-        "col.active_border" = "$color2 $color4 45deg";
-        "col.inactive_border" = "$background";
         layout = "dwindle";
       };
 

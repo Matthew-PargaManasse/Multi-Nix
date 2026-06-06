@@ -110,8 +110,8 @@
     font-awesome
   ];
 
-  # Enable Firmware updates
-  services.fwupd.enable = true;
+  # Firmware updates (Disabled due to LVFS auth timeout failing the build)
+  services.fwupd.enable = false;
 
   # Required by Home Manager for Desktop Environments
   environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ];
