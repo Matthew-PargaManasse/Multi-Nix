@@ -110,7 +110,28 @@
   fonts.packages = with pkgs; [
     nerd-fonts.meslo-lg
     font-awesome
+    (stdenv.mkDerivation {
+      pname = "aptos-fonts";
+      version = "1.0";
+      src = fetchurl {
+        url = "https://github.com/ironveil/ttf-aptos/archive/refs/heads/main.zip";
+        sha256 = "09msdpl05c08x3vzy2kn6g5mbsnsnvvfhssq8qimas3nv6rr42x5";
+      };
+      nativeBuildInputs = [ unzip ];
+      unpackPhase = ''
+        unzip $src
+      '';
+      installPhase = ''
+        mkdir -p $out/share/fonts/truetype
+        cp ttf-aptos-main/*.ttf $out/share/fonts/truetype/
+      '';
+    })
   ];
+
+  # Set Aptos as the default Sans-Serif font system-wide
+  fonts.fontconfig.defaultFonts = {
+    sansSerif = [ "Aptos" ];
+  };
 
   # Firmware updates (Disabled due to LVFS auth timeout failing the build)
   services.fwupd.enable = false;
