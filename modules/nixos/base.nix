@@ -5,8 +5,8 @@
   ...
 }: {
   # Bootloader setup (common for UEFI)
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.enable = pkgs.lib.mkDefault true;
+  boot.loader.efi.canTouchEfiVariables = pkgs.lib.mkDefault true;
 
   # Enable networking (NetworkManager)
   networking.networkmanager.enable = true;
@@ -39,6 +39,7 @@
   # Essential services
   services.openssh.enable = true;
   services.tailscale.enable = true;
+  services.dbus.implementation = "broker";
 
 
   # Enable flakes
@@ -111,6 +112,9 @@
 
   # Enable Firmware updates
   services.fwupd.enable = true;
+
+  # Required by Home Manager for Desktop Environments
+  environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ];
 
   system.stateVersion = "24.05";
 }

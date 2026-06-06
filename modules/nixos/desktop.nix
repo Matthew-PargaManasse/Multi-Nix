@@ -8,7 +8,7 @@
 
   # Display Manager: SDDM (ML4W standard)
   services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = false; # Fallback to X11 to fix Wayland SDDM crashes on Intel UHD 620
+  services.displayManager.sddm.wayland.enable = true;
   services.displayManager.sddm.package = pkgs.kdePackages.sddm;
   services.displayManager.sddm.theme = "sddm-astronaut-theme";
   services.displayManager.defaultSession = "hyprland";

@@ -14,6 +14,12 @@
   boot.loader.grub.enable = false;
   boot.loader.generic-extlinux-compatible.enable = true;
 
+  # Stylix (required since home/base.nix expects stylix to be available)
+  stylix.enable = true;
+  stylix.image = ../../wallpapers/ml4w_tokyonight.jpg;
+  stylix.polarity = "dark";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+
   users.users.mitch = {
     isNormalUser = true;
     shell = pkgs.zsh;
@@ -30,5 +36,11 @@
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = ["wheel" "networkmanager"];
+  };
+
+  # Dummy filesystem to pass nix flake check (replace with actual blkid if installing)
+  fileSystems."/" = {
+    device = "/dev/disk/by-label/NIXOS_SD";
+    fsType = "ext4";
   };
 }

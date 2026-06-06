@@ -15,7 +15,7 @@
   home.packages = with pkgs; [
     # Hacking / Kali-style / OSCP tools
     aircrack-ng
-    bloodhound
+    # bloodhound # TODO: Broken on aarch64
     burpsuite
     chisel
     dnsenum
