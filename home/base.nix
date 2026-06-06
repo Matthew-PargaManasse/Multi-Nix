@@ -6,9 +6,10 @@
 }: {
   imports = [
     ./common/zsh.nix
-    ./common/neovim
+    ./common/nvf.nix
     ./common/theme.nix
     ./common/hyprland.nix
+    ./common/brave.nix
   ];
 
   home.stateVersion = "24.05";

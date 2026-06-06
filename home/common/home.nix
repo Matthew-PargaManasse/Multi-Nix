@@ -6,7 +6,7 @@
 }: {
   imports = [
     ./zsh.nix
-    ./neovim
+    ./nvf.nix
     ./theme.nix
     ./brave.nix
   ];

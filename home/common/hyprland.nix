@@ -39,7 +39,10 @@
     configType = "hyprlang"; # Force traditional parsing, as bleeding-edge Home Manager defaults to experimental 'lua'
 
     settings = {
-      monitor = ",preferred,auto,1";
+      monitor = [
+        "eDP-1,preferred,auto-right,1"
+        ",preferred,auto,1"
+      ];
 
       # Essential Wayland environment variables (Hardware Agnostic)
       env = [
@@ -57,7 +60,7 @@
       # ML4W Style General Settings
       general = {
         gaps_in = 3;
-        gaps_out = 8;
+        gaps_out = 2;
         border_size = 2;
         "col.active_border" = lib.mkForce "rgba(7aa2f7ee) rgba(bb9af7ee) 45deg";
         "col.inactive_border" = lib.mkForce "rgba(1a1b26aa)";
@@ -225,12 +228,19 @@
       #custom-weather,
       #custom-launcher,
       #custom-power,
-      #mpris {
+      #mpris,
+      #window,
+      #taskbar {
           padding: 0 10px;
           margin: 0 5px;
           background-color: #313244;
           border-radius: 10px;
       }
+
+      #cpu { color: #a6e3a1; }
+      #memory { color: #f9e2af; }
+      #battery { color: #f38ba8; }
+      #network.traffic { color: #89b4fa; }
 
       #custom-launcher {
           color: #89b4fa;
@@ -252,9 +262,22 @@
         position = "top";
         height = 30;
         spacing = 4;
-        modules-left = ["custom/launcher" "hyprland/workspaces" "custom/power"];
-        modules-center = ["cpu" "memory" "battery"];
-        modules-right = ["tray" "network" "mpris" "custom/weather" "clock"];
+        modules-left = ["hyprland/window" "custom/launcher" "custom/power"];
+        modules-center = ["cpu" "memory" "battery" "network#traffic"];
+        modules-right = ["wlr/taskbar" "tray" "mpris" "network" "clock"];
+
+        "hyprland/window" = {
+          format = "👉 {}";
+          max-length = 50;
+        };
+
+        "wlr/taskbar" = {
+          format = "{icon}";
+          icon-size = 14;
+          tooltip-format = "{title}";
+          on-click = "activate";
+          on-click-middle = "close";
+        };
 
         "custom/launcher" = {
           format = "";
@@ -303,6 +326,11 @@
           tooltip-format = "{ifname} via {gwaddr}";
         };
 
+        "network#traffic" = {
+          format = "⬆️ {bandwidthUpBytes} ⬇️ {bandwidthDownBytes}";
+          interval = 1;
+        };
+
         mpris = {
           format = "{player_icon} {dynamic}";
           format-paused = "{status_icon} {dynamic}";
@@ -311,7 +339,7 @@
         };
 
         clock = {
-          format = "{:%I:%M %p}";
+          format = "{:%I:%M %p %d:%b:%y}";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
           format-alt = "{:%Y-%m-%d}";
         };
@@ -338,7 +366,7 @@
         background-color: rgba(49, 50, 68, 0.6);
         border: 4px solid #89b4fa; /* Bold border */
         border-radius: 20px;
-        margin: 20px;
+        margin: 120px 40px; /* Increased margin to physically shrink the buttons by ~half */
         background-repeat: no-repeat;
         background-position: center;
         background-size: 25%;
