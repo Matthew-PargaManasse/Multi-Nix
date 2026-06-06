@@ -13,7 +13,6 @@
     playerctl
     swaynotificationcenter
     wlogout
-    wpaperd
 
     # Screenshot utilities
     grim
@@ -36,14 +35,28 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    xwayland.enable = true;
     configType = "hyprlang"; # Force traditional parsing, as bleeding-edge Home Manager defaults to experimental 'lua'
 
-    settings = {
-      monitor = [
-        "eDP-1,preferred,auto-right,1"
-        ",preferred,auto,1"
-      ];
+    extraConfig = ''
+      # Source dynamic colors from Wallust
+      source = ~/.config/wallust/hyprland-colors.conf
+      
+      monitor=eDP-1,preferred,auto-right,1
+      monitor=,preferred,auto,1
+      
+      # For virt-manager
+      windowrule=float,^(virt-manager)$
+      windowrule=size 1280 720,^(virt-manager)$
+      windowrule=center,^(virt-manager)$
 
+      # For Steam
+      windowrule=float,^(Steam)$
+      windowrule=size 1280 720,^(Steam)$
+      windowrule=center,^(Steam)$
+    '';
+
+    settings = {
       # Essential Wayland environment variables (Hardware Agnostic)
       env = [
         "XDG_SESSION_TYPE,wayland"
@@ -51,10 +64,12 @@
 
       exec-once = [
         "waybar"
-        "wpaperd -d"
+        "~/.config/hypr/wallpaper-daemon.sh &"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+        "dunst"
+        "nm-applet --indicator"
       ];
 
       # ML4W Style General Settings
@@ -62,8 +77,8 @@
         gaps_in = 3;
         gaps_out = 1;
         border_size = 2;
-        "col.active_border" = lib.mkForce "rgba(7aa2f7ee) rgba(bb9af7ee) 45deg";
-        "col.inactive_border" = lib.mkForce "rgba(1a1b26aa)";
+        "col.active_border" = "$color2 $color4 45deg";
+        "col.inactive_border" = "$background";
         layout = "dwindle";
       };
 
@@ -193,6 +208,8 @@
   programs.waybar = {
     enable = true;
     style = ''
+      @import "/home/mitch/.config/wallust/waybar-colors.css";
+
       * {
           border: none;
           border-radius: 10px;
@@ -202,20 +219,20 @@
       }
 
       window#waybar {
-          background: rgba(30, 30, 46, 0.8);
-          color: #cdd6f4;
+          background: alpha(@background, 0.8);
+          color: @foreground;
       }
 
       #workspaces button {
           padding: 0 5px;
           background: transparent;
-          color: #cdd6f4;
+          color: @foreground;
           border-bottom: 2px solid transparent;
       }
 
       #workspaces button.focused {
-          background: #313244;
-          border-bottom: 2px solid #89b4fa;
+          background: @color0;
+          border-bottom: 2px solid @color4;
       }
 
       #clock,
@@ -233,25 +250,25 @@
       #taskbar {
           padding: 0 10px;
           margin: 0 5px;
-          background-color: #313244;
+          background-color: @color0;
           border-radius: 10px;
       }
 
-      #cpu { color: #a6e3a1; }
-      #memory { color: #f9e2af; }
-      #battery { color: #f38ba8; }
-      #network.traffic { color: #89b4fa; }
+      #cpu { color: @color2; }
+      #memory { color: @color3; }
+      #battery { color: @color1; }
+      #network.traffic { color: @color4; }
 
       #custom-launcher {
-          color: #89b4fa;
+          color: @color4;
           font-size: 18px;
           padding-right: 15px;
           padding-left: 15px;
       }
 
       #custom-power {
-          color: #f38ba8;
-          font-size: 16px;
+          color: @color1;
+          font-size: 18px;
           padding-right: 15px;
           padding-left: 15px;
       }
@@ -351,6 +368,8 @@
   programs.wlogout = {
     enable = true;
     style = ''
+      @import "/home/mitch/.config/wallust/wlogout-colors.css";
+
       * {
         font-family: "MesloLGS Nerd Font Mono", "Font Awesome 5 Free";
         background-image: none;
@@ -358,13 +377,13 @@
       }
 
       window {
-        background-color: rgba(30, 30, 46, 0.6); /* 60% opacity background */
+        background-color: alpha(@background, 0.6); /* 60% opacity background */
       }
 
       button {
-        color: #cdd6f4;
-        background-color: rgba(49, 50, 68, 0.6);
-        border: 4px solid #89b4fa; /* Bold border */
+        color: @foreground;
+        background-color: alpha(@color0, 0.6);
+        border: 4px solid @color4; /* Bold border */
         border-radius: 20px;
         margin: 120px 40px; /* Increased margin to physically shrink the buttons by ~half */
         background-repeat: no-repeat;
@@ -373,8 +392,8 @@
       }
 
       button:focus, button:active, button:hover {
-        background-color: rgba(137, 180, 250, 0.4);
-        border: 4px solid #b4befe;
+        background-color: alpha(@color4, 0.4);
+        border: 4px solid @color6;
         outline-style: none;
       }
 
@@ -456,11 +475,4 @@
     };
   };
 
-  # Configure wpaperd for dynamic timed wallpapers via home.file
-  # to avoid systemd Nvidia environment variable issues.
-  home.file.".config/wpaperd/wallpaper.toml".text = ''
-    [default]
-    path = "/home/mitch/wallpapers"
-    duration = "30m"
-  '';
 }

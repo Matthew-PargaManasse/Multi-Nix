@@ -8,6 +8,7 @@
     ./zsh.nix
     ./nvf.nix
     ./theme.nix
+    ./wallust.nix
     ./brave.nix
   ];
 

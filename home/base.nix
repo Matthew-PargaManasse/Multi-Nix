@@ -9,6 +9,7 @@
     ./common/nvf.nix
     ./common/theme.nix
     ./common/hyprland.nix
+    ./common/wallust.nix
     ./common/brave.nix
   ];
 
