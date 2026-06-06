@@ -1,111 +1,61 @@
-# System Keyboard Shortcuts & Aliases
+# Hyprland Keybindings
 
-This file contains a reference list of all configured keyboard shortcuts, keybinds, and aliases across the system. 
-As you update your `.nix` configuration files, remember to update this document to keep it current.
+This document details all the custom keybindings configured in the Multi-Nix Hyprland environment. 
 
----
+> **Note:** The `SUPER` key (also known as the Windows key or Meta key) is the primary modifier for most bindings.
 
-## 🪟 Hyprland (Window Manager)
+## 🚀 Launchers & Apps
+| Keybind | Action | Description |
+| :--- | :--- | :--- |
+| `SUPER` + `Return` | Launch Terminal | Opens the Kitty terminal emulator. |
+| `SUPER` + `E` | File Manager | Opens the Yazi terminal file manager inside a large-font Kitty window. |
+| `SUPER` + `Space` | Application Launcher | Opens Rofi in `drun` mode (with icons) to launch installed applications. |
+| `SUPER` + `Tab` | Window Switcher | Opens Rofi in `window` mode to switch between currently open windows. |
+| `SUPER` + `Escape` | Power Menu | Opens the custom Wlogout menu (lock, hibernate, logout, shutdown, suspend, reboot). |
+| `SUPER` + `V` | Clipboard History | Opens the Cliphist clipboard manager via Rofi. Select an item to copy it back to your clipboard. |
 
-**Modifier Key (`$mainMod`) = SUPER / Windows Key**
+## 🪟 Window Management
+| Keybind | Action | Description |
+| :--- | :--- | :--- |
+| `SUPER` + `Q` | Kill Window | Forcibly closes the currently active window. |
+| `SUPER` + `Shift` + `Space` | Toggle Floating | Toggles the active window between floating and tiling mode. |
+| `SUPER` + `F` | Fullscreen (True) | Maximizes the window to take up the entire screen (hides Waybar). |
+| `SUPER` + `Shift` + `F` | Maximize (Soft) | Maximizes the window within the tiling bounds (keeps Waybar visible). |
+| `SUPER` + `J` | Toggle Split | Toggles the layout split direction for the current window. |
+| `SUPER` + `P` | Pseudo-tiling | Toggles pseudo-tiling mode for the active window. |
+| `ALT` + `Tab` | Cycle Next | Switches focus to the next window (standard Alt-Tab behavior). |
 
-### Core System
-| Shortcut | Action |
-|---|---|
-| `SUPER` + `Return` | Open Kitty (Terminal) |
-| `SUPER` + `Q` | Kill active window |
-| `SUPER` + `M` | Exit Hyprland |
-| `SUPER` + `E` | Open Yazi (File Manager) in Kitty |
-| `SUPER` + `Space` | Open Rofi (App Launcher) |
-| `SUPER` + `Tab` | Open Rofi (Window Switcher) |
-| `SUPER` + `Escape` | Open Wlogout (Power Menu) |
-| `SUPER` + `V` | Open Cliphist (Clipboard Manager via Rofi) |
-| `Print Screen` | Take Screenshot (Grim + Slurp) and open in Swappy |
+## 🎯 Navigation & Movement
+| Keybind | Action | Description |
+| :--- | :--- | :--- |
+| `SUPER` + `Left/Right/Up/Down` | Move Focus | Shifts your focus to the window in the specified direction. |
+| `SUPER` + `Shift` + `Left/Right/Up/Down` | Move Window | Physically moves the active window within the tiling layout in the specified direction. |
 
-### Window Management
-| Shortcut | Action |
-|---|---|
-| `SUPER` + `F` | Toggle Fullscreen (Hides Waybar) |
-| `SUPER` + `Shift` + `F` | Maximize window (Keeps Waybar visible) |
-| `Alt` + `Tab` | Cycle through windows (Alt-Tab style) |
-| `SUPER` + `Shift` + `Space` | Toggle floating mode for active window |
-| `SUPER` + `P` | Toggle Pseudo-tiling |
-| `SUPER` + `J` | Toggle window split layout |
-| `SUPER` + `Left/Right/Up/Down` | Move focus between windows |
-| `SUPER` + `Shift` + `Left/Right/Up/Down` | Move active window around the screen |
-| `SUPER` + `Left Click (Hold)` | Move floating window |
-| `SUPER` + `Right Click (Hold)`| Resize floating window |
+## 🖥️ Workspaces
+| Keybind | Action | Description |
+| :--- | :--- | :--- |
+| `SUPER` + `[1-0]` | Switch Workspace | Switches your view to the specified workspace (1 through 10). |
+| `SUPER` + `Shift` + `[1-0]` | Move to Workspace | Moves the currently active window to the specified workspace. |
 
-### Workspaces
-| Shortcut | Action |
-|---|---|
-| `SUPER` + `1-0` | Switch to workspace 1-10 |
-| `SUPER` + `Shift` + `1-0` | Move active window to workspace 1-10 |
+## 📸 Screenshots
+| Keybind | Action | Description |
+| :--- | :--- | :--- |
+| `Print Screen` | Full Screen Screenshot | Captures the entire screen and opens it in Swappy for editing/saving. |
+| `SUPER` + `Print Screen` | Region Screenshot | Freezes the screen and lets you draw a rectangle to capture a specific region, then opens it in Swappy. |
 
-### Media & Hardware Controls
-| Shortcut | Action |
-|---|---|
-| `Volume Up/Down` | Raise/Lower volume by 5% |
-| `Mute` | Toggle Audio Mute |
-| `Brightness Up/Down`| Raise/Lower screen brightness by 5% |
+## 🔊 Hardware Controls & Media
+*These bindings utilize the `swayosd` overlay daemon to provide visual feedback for hardware keys.*
 
----
+| Keybind | Action | Description |
+| :--- | :--- | :--- |
+| `Volume Up` | Raise Volume | Increases speaker volume and displays an overlay. |
+| `Volume Down` | Lower Volume | Decreases speaker volume and displays an overlay. |
+| `Mute` | Toggle Speaker Mute | Mutes/unmutes the audio output and displays an overlay. |
+| `Mic Mute` | Toggle Mic Mute | Mutes/unmutes the microphone input and displays an overlay. |
+| `Brightness Up` | Raise Brightness | Increases the display brightness and displays an overlay. |
+| `Brightness Down` | Lower Brightness | Decreases the display brightness and displays an overlay. |
 
-## ⚡ Wlogout (Power Menu)
-
-When Wlogout is open (via `SUPER` + `Escape`), use these keys:
-
-| Key | Action |
-|---|---|
-| `l` | Lock Screen (Hyprlock) |
-| `h` | Hibernate |
-| `e` | Logout |
-| `s` | Shutdown |
-| `u` | Suspend |
-| `r` | Reboot |
-
----
-
-## 📝 Neovim (nixvim)
-
-**Leader Key (`<leader>`) = Space**
-
-### Normal Mode
-| Shortcut | Action |
-|---|---|
-| `ESC` | Clear search highlighting |
-| `Y` | Yank to end of line (behaves like `D` or `C`) |
-| `Ctrl` + `c` | Toggle between two most recent files |
-| `Ctrl` + `x` | Close current window |
-| `Space` + `s` OR `Ctrl` + `s` | Save file (`:w`) |
-| `Space` + `h/l` | Navigate to left/right split window |
-| `H` | Jump to start of line |
-| `L` | Jump to end of line |
-| `Ctrl` + `Up/Down` | Resize horizontal split |
-| `Ctrl` + `Left/Right`| Resize vertical split |
-| `Alt` + `j/k` | Move current line up/down |
-
-### Visual Mode
-| Shortcut | Action |
-|---|---|
-| `>` or `TAB` | Indent block and keep selection |
-| `<` or `Shift+TAB` | Un-indent block and keep selection |
-| `J` | Move selected block down one line |
-| `K` | Move selected block up one line |
-| `Space` + `s` | Sort selected lines |
-
----
-
-## 🐚 Zsh & Terminal Aliases
-
-These are the custom commands available in your terminal:
-
-| Alias / Command | Action | Note |
-|---|---|---|
-| `ls` | `eza --icons` | Modern `ls` replacement with icons |
-| `ll` | `eza -lh --icons` | Detailed list view |
-| `lah` | `eza -lah --icons` | Detailed list view with hidden files |
-| `cat` | `bat` | Modern `cat` replacement with syntax highlighting |
-| `cd` | `z` (zoxide) | Smart directory jumper |
-| `update` | `sudo nix flake update && sudo nixos-rebuild switch --flake ./#nixos` | System updater alias |
-| `v` | `nvim` | Quick launch Neovim |
+## 🚪 System
+| Keybind | Action | Description |
+| :--- | :--- | :--- |
+| `SUPER` + `M` | Exit Hyprland | Force quits the Hyprland session and returns to the SDDM login screen. |
