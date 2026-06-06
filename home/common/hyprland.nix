@@ -44,12 +44,6 @@
       
       monitor=eDP-1,preferred,auto,1
       monitor=,preferred,auto-left,1
-
-      # Define border colors here so they evaluate AFTER the source
-      general {
-        col.active_border = $color2 $color4 45deg
-        col.inactive_border = $background
-      }
     '';
 
     settings = {

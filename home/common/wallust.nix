@@ -64,6 +64,11 @@
     $color3 = rgb({{color3 | strip}})
     $color4 = rgb({{color4 | strip}})
     $color5 = rgb({{color5 | strip}})
+
+    general {
+      col.active_border = $color2 $color4 45deg
+      col.inactive_border = $background
+    }
   '';
 
   home.file.".config/hypr/wallpaper-daemon.sh" = {
