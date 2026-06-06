@@ -13,6 +13,7 @@
     playerctl
     swaynotificationcenter
     wlogout
+    swayosd
 
     # Screenshot utilities
     grim
@@ -65,6 +66,7 @@
       exec-once = [
         "waybar"
         "~/.config/hypr/wallpaper-daemon.sh &"
+        "swayosd-server"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
@@ -183,17 +185,19 @@
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
 
-        # Screenshot bindings
-        ", Print, exec, sh -c 'grim -g \"$(slurp)\" - | swappy -f -'"
+        # Screenshot bindings (Full screen vs Region)
+        ", Print, exec, grim - | swappy -f -"
+        "$mainMod, Print, exec, sh -c 'grim -g \"$(slurp)\" - | swappy -f -'"
       ];
 
       bindel = [
         # Media controls (e = repeat, l = works when locked)
-        ", XF86AudioRaiseVolume, exec, pamixer -i 5"
-        ", XF86AudioLowerVolume, exec, pamixer -d 5"
-        ", XF86AudioMute, exec, pamixer -t"
-        ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
-        ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+        ", XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
+        ", XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
+        ", XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
+        ", XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
+        ", XF86MonBrightnessUp, exec, swayosd-client --brightness raise"
+        ", XF86MonBrightnessDown, exec, swayosd-client --brightness lower"
       ];
 
       bindm = [
