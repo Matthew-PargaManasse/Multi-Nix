@@ -87,8 +87,8 @@
         # Generate colors with wallust
         wallust run "$WALLPAPER"
         
-        # Restart Waybar to apply new colors safely (SIGUSR2 is unstable and causes crashes)
-        killall waybar
+        # Restart Waybar to apply new colors safely
+        killall .waybar-wrapped waybar || true
         waybar &
         
         # Force Hyprland to reload config to pick up new colors
