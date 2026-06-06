@@ -60,7 +60,7 @@
       # ML4W Style General Settings
       general = {
         gaps_in = 3;
-        gaps_out = 2;
+        gaps_out = 1;
         border_size = 2;
         "col.active_border" = lib.mkForce "rgba(7aa2f7ee) rgba(bb9af7ee) 45deg";
         "col.inactive_border" = lib.mkForce "rgba(1a1b26aa)";
@@ -339,7 +339,7 @@
         };
 
         clock = {
-          format = "{:%I:%M %p %d:%b:%y}";
+          format = "{:%I:%M %p  %a %d %b %y}";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
           format-alt = "{:%Y-%m-%d}";
         };
