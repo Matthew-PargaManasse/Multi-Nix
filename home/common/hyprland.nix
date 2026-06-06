@@ -142,6 +142,9 @@
         "$mainMod, Q, killactive, "
         "$mainMod, M, exit, "
         "$mainMod, E, exec, kitty -o font_size=16 -e yazi"
+        "$mainMod, W, exec, killall wallpaper-daemon.sh ; ~/.config/hypr/wallpaper-daemon.sh &"
+        "$mainMod, B, exec, brave"
+        "$mainMod, S, exec, spotify"
         "$mainMod SHIFT, Space, togglefloating, "
         "$mainMod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
         "$mainMod, Tab, exec, rofi -show window"
@@ -154,6 +157,11 @@
         # Window State
         "$mainMod, F, fullscreen, 0" # True fullscreen (hides Waybar)
         "$mainMod SHIFT, F, fullscreen, 1" # Maximize (keeps Waybar visible)
+        
+        # Minimize (Hide to special workspace)
+        "$mainMod, N, movetoworkspacesilent, special:minimized"
+        "$mainMod SHIFT, N, togglespecialworkspace, minimized"
+
         "ALT, Tab, cyclenext, " # Alt-Tab equivalent
         "ALT, Tab, bringactivetotop, "
 

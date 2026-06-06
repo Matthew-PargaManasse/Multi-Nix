@@ -9,15 +9,20 @@ This document details all the custom keybindings configured in the Multi-Nix Hyp
 | :--- | :--- | :--- |
 | `SUPER` + `Return` | Launch Terminal | Opens the Kitty terminal emulator. |
 | `SUPER` + `E` | File Manager | Opens the Yazi terminal file manager inside a large-font Kitty window. |
+| `SUPER` + `B` | Brave Browser | Launches the Brave web browser. |
+| `SUPER` + `S` | Spotify | Launches the Spotify music player. |
 | `SUPER` + `Space` | Application Launcher | Opens Rofi in `drun` mode (with icons) to launch installed applications. |
 | `SUPER` + `Tab` | Window Switcher | Opens Rofi in `window` mode to switch between currently open windows. |
 | `SUPER` + `Escape` | Power Menu | Opens the custom Wlogout menu (lock, hibernate, logout, shutdown, suspend, reboot). |
 | `SUPER` + `V` | Clipboard History | Opens the Cliphist clipboard manager via Rofi. Select an item to copy it back to your clipboard. |
+| `SUPER` + `W` | Cycle Wallpaper | Immediately kills the current wallpaper timer and forces the daemon to pick a new wallpaper and color scheme. |
 
 ## 🪟 Window Management
 | Keybind | Action | Description |
 | :--- | :--- | :--- |
 | `SUPER` + `Q` | Kill Window | Forcibly closes the currently active window. |
+| `SUPER` + `N` | Minimize Window | Hides the currently active window into the "minimized" special workspace. |
+| `SUPER` + `Shift` + `N` | Restore Window | Toggles the "minimized" special workspace to let you retrieve hidden windows. |
 | `SUPER` + `Shift` + `Space` | Toggle Floating | Toggles the active window between floating and tiling mode. |
 | `SUPER` + `F` | Fullscreen (True) | Maximizes the window to take up the entire screen (hides Waybar). |
 | `SUPER` + `Shift` + `F` | Maximize (Soft) | Maximizes the window within the tiling bounds (keeps Waybar visible). |
