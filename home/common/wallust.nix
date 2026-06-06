@@ -9,19 +9,17 @@
     color_space = "lab"
     palette = "dark16"
     
-    [templates]
-    waybar = {
-      template = "waybar.css"
-      target = "~/.config/wallust/waybar-colors.css"
-    }
-    wlogout = {
-      template = "wlogout.css"
-      target = "~/.config/wallust/wlogout-colors.css"
-    }
-    hyprland = {
-      template = "hyprland.conf"
-      target = "~/.config/wallust/hyprland-colors.conf"
-    }
+    [templates.waybar]
+    template = "waybar.css"
+    target = "~/.config/wallust/waybar-colors.css"
+    
+    [templates.wlogout]
+    template = "wlogout.css"
+    target = "~/.config/wallust/wlogout-colors.css"
+    
+    [templates.hyprland]
+    template = "hyprland.conf"
+    target = "~/.config/wallust/hyprland-colors.conf"
   '';
 
   home.file.".config/wallust/templates/waybar.css".text = ''
@@ -46,13 +44,12 @@
   '';
 
   home.file.".config/wallust/templates/wlogout.css".text = ''
-    @define-color background {{background}};
+    @define-color background_alpha rgba({{background | rgb}}, 0.6);
     @define-color foreground {{foreground}};
-    @define-color color0 {{color0}};
-    @define-color color1 {{color1}};
-    @define-color color2 {{color2}};
-    @define-color color3 {{color3}};
+    @define-color color0_alpha rgba({{color0 | rgb}}, 0.6);
+    @define-color color4_alpha rgba({{color4 | rgb}}, 0.4);
     @define-color color4 {{color4}};
+    @define-color color6 {{color6}};
   '';
 
   home.file.".config/wallust/templates/hyprland.conf".text = ''

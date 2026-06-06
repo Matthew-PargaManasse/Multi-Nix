@@ -272,7 +272,7 @@
         position = "top";
         height = 30;
         spacing = 4;
-        modules-left = ["hyprland/window" "custom/launcher" "custom/power"];
+        modules-left = ["custom/launcher" "hyprland/workspaces" "hyprland/window"];
         modules-center = ["cpu" "memory" "battery" "network#traffic"];
         modules-right = ["wlr/taskbar" "tray" "mpris" "network" "clock"];
 
@@ -366,16 +366,16 @@
       * {
         font-family: "MesloLGS Nerd Font Mono", "Font Awesome 5 Free";
         background-image: none;
-        transition: 20s;
+        transition: box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
       }
 
       window {
-        background-color: alpha(@background, 0.6); /* 60% opacity background */
+        background-color: @background_alpha;
       }
 
       button {
         color: @foreground;
-        background-color: alpha(@color0, 0.6);
+        background-color: @color0_alpha;
         border: 4px solid @color4; /* Bold border */
         border-radius: 20px;
         margin: 120px 40px; /* Increased margin to physically shrink the buttons by ~half */
@@ -385,7 +385,7 @@
       }
 
       button:focus, button:active, button:hover {
-        background-color: alpha(@color4, 0.4);
+        background-color: @color4_alpha;
         border: 4px solid @color6;
         outline-style: none;
       }
