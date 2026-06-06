@@ -39,6 +39,9 @@
     openFirewall = false; # We purposefully DO NOT open the firewall to the public internet!
   };
 
+  # Enable uinput for Sunshine virtual mouse and keyboard
+  hardware.uinput.enable = true;
+
   # Trust the Tailscale interface for all ports so we can access Sunshine securely
   networking.firewall.trustedInterfaces = [ "tailscale0" ];
 

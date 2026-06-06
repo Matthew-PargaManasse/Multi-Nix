@@ -16,7 +16,7 @@
     isNormalUser = true;
     description = "mitch";
     shell = pkgs.zsh;
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "uinput"];
   };
 
   users.users.mitch-daily = {
