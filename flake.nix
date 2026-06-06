@@ -27,7 +27,6 @@
       url = "github:notashelf/nvf";
     };
 
-    stylix.url = "github:danth/stylix";
   };
 
   outputs = inputs @ {
@@ -59,7 +58,6 @@
             system = "x86_64-linux";
             specialArgs = {inherit inputs;};
             modules = [
-              inputs.stylix.nixosModules.stylix
               ./hosts/laptop/default.nix
               home-manager.nixosModules.home-manager
               {
@@ -78,7 +76,6 @@
             system = "x86_64-linux";
             specialArgs = {inherit inputs;};
             modules = [
-              inputs.stylix.nixosModules.stylix
               ./hosts/laptop-nvidia/default.nix
               home-manager.nixosModules.home-manager
               {
@@ -97,7 +94,6 @@
             system = "x86_64-linux";
             specialArgs = {inherit inputs;};
             modules = [
-              inputs.stylix.nixosModules.stylix
               ./hosts/desktop/default.nix
               home-manager.nixosModules.home-manager
               {
@@ -116,7 +112,6 @@
             system = "aarch64-linux";
             specialArgs = {inherit inputs;};
             modules = [
-              inputs.stylix.nixosModules.stylix
               nixos-hardware.nixosModules.raspberry-pi-4
               ./hosts/rpi4/default.nix
               home-manager.nixosModules.home-manager

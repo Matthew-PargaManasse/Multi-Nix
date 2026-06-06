@@ -55,7 +55,7 @@
     ghidra
     radare2
     binwalk
-    autopsy
+    # autopsy # TODO: Broken on aarch64
     volatility3
 
     # --- Information Gathering & OSINT ---

@@ -26,11 +26,7 @@
     polkit_gnome
   ];
 
-  # Disable Stylix from forcefully overwriting our manual configs
-  stylix.targets.hyprland.enable = false;
-  stylix.targets.waybar.enable = false;
-  stylix.targets.rofi.enable = false;
-  
+
   # Force disable Hyprpaper service
   services.hyprpaper.enable = lib.mkForce false;
 
