@@ -115,7 +115,7 @@
       version = "1.0";
       src = fetchurl {
         url = "https://github.com/ironveil/ttf-aptos/archive/refs/heads/main.zip";
-        sha256 = "09msdpl05c08x3vzy2kn6g5mbsnsnvvfhssq8qimas3nv6rr42x5";
+        sha256 = "sha256-7uy/WcjhdKSXcTnToRs7TQRRdtc7dXZktcQZfVbgqI4=";
       };
       nativeBuildInputs = [ unzip ];
       unpackPhase = ''
