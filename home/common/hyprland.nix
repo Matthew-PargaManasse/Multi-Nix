@@ -19,14 +19,19 @@
       WIDTH=$(hyprctl monitors -j | jq -r '.[] | select(.focused) | .width')
       HEIGHT=$(hyprctl monitors -j | jq -r '.[] | select(.focused) | .height')
       
-      # Calculate margins to confine the grid to the center 1/3 horizontally, and 1/2 vertically
-      MARGIN_L=$(( WIDTH / 3 ))
-      MARGIN_R=$(( WIDTH / 3 ))
-      MARGIN_T=$(( HEIGHT / 4 ))
-      MARGIN_B=$(( HEIGHT / 4 ))
+      # We want the grid to be exactly 1/3 of the screen width
+      GRID_WIDTH=$(( WIDTH / 3 ))
       
-      # Launch wlogout with calculated grid margins
-      wlogout -b 6 -L $MARGIN_L -R $MARGIN_R -T $MARGIN_T -B $MARGIN_B
+      # For a 3x2 grid of perfect squares, the grid height must be 2/3 of the grid width
+      GRID_HEIGHT=$(( GRID_WIDTH * 2 / 3 ))
+      
+      MARGIN_L=$(( (WIDTH - GRID_WIDTH) / 2 ))
+      MARGIN_R=$(( MARGIN_L ))
+      MARGIN_T=$(( (HEIGHT - GRID_HEIGHT) / 2 ))
+      MARGIN_B=$(( MARGIN_T ))
+      
+      # Launch wlogout with calculated grid margins (defaults to 3 buttons per row)
+      wlogout -b 3 -L $MARGIN_L -R $MARGIN_R -T $MARGIN_T -B $MARGIN_B
     '')
 
     # Screenshot utilities
