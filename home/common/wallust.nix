@@ -94,14 +94,17 @@
       drun-display-format: "{icon} {name}";
       font: "Aptos 14";
     }
+    @theme "/home/mitch/.config/rofi/theme.rasi"
+  '';
 
-    @theme "/home/mitch/.config/wallust/rofi-colors.rasi"
+  home.file.".config/rofi/theme.rasi".text = ''
+    @import "/home/mitch/.config/wallust/rofi-colors.rasi"
 
     window {
         width: 45%;
         border-radius: 12px;
-        background-color: @background;
-        border: 2px solid @selected;
+        background-color: var(background);
+        border: 2px solid var(selected);
         padding: 20px;
     }
 
@@ -111,23 +114,23 @@
     }
 
     inputbar {
-        background-color: @background-alt;
+        background-color: var(background-alt);
         border-radius: 8px;
         padding: 12px;
         spacing: 10px;
-        text-color: @foreground;
+        text-color: var(foreground);
     }
 
     entry {
         background-color: transparent;
-        text-color: @foreground;
+        text-color: var(foreground);
         placeholder: "Search...";
         placeholder-color: inherit;
     }
 
     prompt {
         background-color: transparent;
-        text-color: @foreground;
+        text-color: var(foreground);
         font: "Aptos Bold 14";
     }
 
@@ -142,12 +145,12 @@
         background-color: transparent;
         padding: 10px;
         border-radius: 8px;
-        text-color: @foreground;
+        text-color: var(foreground);
     }
 
     element selected {
-        background-color: @selected;
-        text-color: @background;
+        background-color: var(selected);
+        text-color: var(background);
     }
 
     element-text {
