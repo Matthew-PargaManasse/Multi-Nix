@@ -64,14 +64,14 @@
       # -----------------------------------------------------
       # MULTI-PROFILE MONITOR CONFIGURATION
       # -----------------------------------------------------
-      # Laptop screen (Always anchored at 0x0 for Mobile/Home/Work compatibility)
-      monitor=desc:AU Optronics 0x633D,preferred,0x0,1
+      # Laptop screen (Bottom Left)
+      monitor=desc:AU Optronics 0x633D,preferred,0x1440,1
       
-      # WORK DESK: Top External Monitor (Samsung)
-      monitor=desc:Samsung Electric Company C34H89x HCPR501463,preferred,1920x-1440,1
+      # WORK DESK: Top External Monitor (Samsung) (Top Right)
+      monitor=desc:Samsung Electric Company C34H89x HCPR501463,preferred,1920x0,1
       
-      # WORK DESK: Bottom External Monitor (Sceptre)
-      monitor=desc:Sceptre Tech Inc Sceptre B34 0000000000000,preferred,1920x0,1
+      # WORK DESK: Bottom External Monitor (Sceptre) (Bottom Right)
+      monitor=desc:Sceptre Tech Inc Sceptre B34 0000000000000,preferred,1920x1440,1
       
       # HOME DESK / ANY OTHER: Fallback rule automatically places new monitors to the right
       monitor=,preferred,auto,1
