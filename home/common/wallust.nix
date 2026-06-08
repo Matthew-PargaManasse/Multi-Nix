@@ -104,7 +104,8 @@
         width: 45%;
         border-radius: 12px;
         background-color: var(background);
-        border: 2px solid var(selected);
+        border: 2px;
+        border-color: var(selected);
         padding: 20px;
     }
 

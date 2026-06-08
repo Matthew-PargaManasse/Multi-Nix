@@ -62,6 +62,24 @@
     libsForQt5.qt5ct
   ];
 
+  xdg.desktopEntries.antigravity = {
+    name = "Antigravity";
+    genericName = "AI Coding Assistant";
+    exec = "antigravity";
+    terminal = false;
+    categories = [ "Development" "Utility" ];
+    icon = "utilities-terminal";
+  };
+
+  xdg.desktopEntries."antigravity-ide" = {
+    name = "Antigravity IDE";
+    genericName = "AI IDE";
+    exec = "antigravity-ide";
+    terminal = false;
+    categories = [ "Development" "IDE" ];
+    icon = "code";
+  };
+
   home.file = {};
 
   home.sessionVariables = {
