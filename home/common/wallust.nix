@@ -95,13 +95,13 @@
       font: "Aptos 14";
     }
 
-    @theme "~/.config/wallust/rofi-colors.rasi"
+    @theme "/home/mitch/.config/wallust/rofi-colors.rasi"
 
     window {
         width: 45%;
         border-radius: 12px;
-        background-color: var(background);
-        border: 2px solid var(selected);
+        background-color: @background;
+        border: 2px solid @selected;
         padding: 20px;
     }
 
@@ -111,23 +111,23 @@
     }
 
     inputbar {
-        background-color: var(background-alt);
+        background-color: @background-alt;
         border-radius: 8px;
         padding: 12px;
         spacing: 10px;
-        text-color: var(foreground);
+        text-color: @foreground;
     }
 
     entry {
         background-color: transparent;
-        text-color: var(foreground);
+        text-color: @foreground;
         placeholder: "Search...";
         placeholder-color: inherit;
     }
 
     prompt {
         background-color: transparent;
-        text-color: var(foreground);
+        text-color: @foreground;
         font: "Aptos Bold 14";
     }
 
@@ -142,12 +142,12 @@
         background-color: transparent;
         padding: 10px;
         border-radius: 8px;
-        text-color: var(foreground);
+        text-color: @foreground;
     }
 
     element selected {
-        background-color: var(selected);
-        text-color: var(background);
+        background-color: @selected;
+        text-color: @background;
     }
 
     element-text {
