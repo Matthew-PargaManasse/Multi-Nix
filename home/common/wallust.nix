@@ -21,6 +21,10 @@
     [templates.hyprland]
     template = "hyprland.conf"
     target = "~/.config/wallust/hyprland-colors.conf"
+    
+    [templates.rofi]
+    template = "rofi.rasi"
+    target = "~/.config/wallust/rofi-colors.rasi"
   '';
 
   home.file.".config/wallust/templates/waybar.css".text = ''
@@ -66,6 +70,96 @@
     general {
       col.active_border = $color2 $color4 45deg
       col.inactive_border = $background
+    }
+  '';
+
+  home.file.".config/wallust/templates/rofi.rasi".text = ''
+    * {
+        background:                  rgba({{background | rgb}}, 0.8);
+        background-alt:              rgba({{color0 | rgb}}, 0.6);
+        foreground:                  {{foreground}};
+        selected:                    {{color4}};
+        active:                      {{color2}};
+        urgent:                      {{color1}};
+    }
+  '';
+
+  home.file.".config/rofi/config.rasi".text = ''
+    configuration {
+      modi: "drun,run,window";
+      show-icons: true;
+      display-drun: " Apps";
+      display-run: " Run";
+      display-window: " Windows";
+      drun-display-format: "{icon} {name}";
+      font: "Aptos 14";
+    }
+
+    @theme "~/.config/wallust/rofi-colors.rasi"
+
+    window {
+        width: 45%;
+        border-radius: 12px;
+        background-color: @background;
+        border: 2px solid @selected;
+        padding: 20px;
+    }
+
+    mainbox {
+        background-color: transparent;
+        spacing: 15px;
+    }
+
+    inputbar {
+        background-color: @background-alt;
+        border-radius: 8px;
+        padding: 12px;
+        spacing: 10px;
+        text-color: @foreground;
+    }
+
+    entry {
+        background-color: transparent;
+        text-color: @foreground;
+        placeholder: "Search...";
+        placeholder-color: inherit;
+    }
+
+    prompt {
+        background-color: transparent;
+        text-color: @foreground;
+        font: "Aptos Bold 14";
+    }
+
+    listview {
+        background-color: transparent;
+        lines: 8;
+        spacing: 8px;
+        scrollbar: false;
+    }
+
+    element {
+        background-color: transparent;
+        padding: 10px;
+        border-radius: 8px;
+        text-color: @foreground;
+    }
+
+    element selected {
+        background-color: @selected;
+        text-color: @background;
+    }
+
+    element-text {
+        background-color: transparent;
+        text-color: inherit;
+        vertical-align: 0.5;
+    }
+
+    element-icon {
+        background-color: transparent;
+        size: 24px;
+        padding: 0 10px 0 0;
     }
   '';
 
