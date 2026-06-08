@@ -41,6 +41,8 @@
   services.tailscale.enable = true;
   networking.firewall.checkReversePath = "loose"; # Required for Tailscale
   services.dbus.implementation = "broker";
+  services.hardware.bolt.enable = true; # Required for Thunderbolt Docks (like Dell Docks)
+  hardware.keyboard.qmk.enable = true; # Required for custom mechanical keyboards (e.g. Hillside)
 
 
   # Enable flakes
