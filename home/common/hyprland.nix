@@ -61,8 +61,17 @@
       # Source dynamic colors from Wallust BEFORE using them
       source = ~/.config/wallust/hyprland-colors.conf
       
-      monitor=eDP-1,preferred,auto,1
-      monitor=,preferred,auto-left,1
+      # Laptop screen (Left side, aligned with the bottom monitor)
+      monitor=desc:AU Optronics 0x633D,preferred,0x1440,1
+      
+      # Top External Monitor (Samsung)
+      monitor=desc:Samsung Electric Company C34H89x HCPR501463,preferred,1920x0,1
+      
+      # Bottom External Monitor (Sceptre)
+      monitor=desc:Sceptre Tech Inc Sceptre B34 0000000000000,preferred,1920x1440,1
+      
+      # Fallback for any other monitors plugged in
+      monitor=,preferred,auto,1
     '';
 
     settings = {
