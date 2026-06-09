@@ -65,13 +65,13 @@
       # MULTI-PROFILE MONITOR CONFIGURATION
       # -----------------------------------------------------
       # Laptop screen (Bottom Left)
-      monitor=desc:AU Optronics 0x633D,1920x1080@60.05,0x1440,1
+      monitor=desc:AU Optronics 0x633D,1920x1080@60.05,0x1080,1
       
       # WORK DESK: Top External Monitor (Samsung) (Top Right)
-      monitor=desc:Samsung Electric Company C34H89x HCPR501463,3440x1440@59.97,1920x0,1
+      monitor=desc:Samsung Electric Company C34H89x HCPR501463,1920x1080@60.00,1920x0,1
       
       # WORK DESK: Bottom External Monitor (Sceptre) (Bottom Right)
-      monitor=desc:Sceptre Tech Inc Sceptre B34 0000000000000,2560x1080@60.01,1920x1440,1
+      monitor=desc:Sceptre Tech Inc Sceptre B34 0000000000000,2560x1080@60.01,1920x1080,1
       
       # HOME DESK / ANY OTHER: Fallback rule automatically places new monitors to the right
       monitor=,preferred,auto,1
@@ -155,6 +155,8 @@
         "$mainMod, E, exec, kitty -o font_size=16 -e yazi"
         "$mainMod, W, exec, killall wallpaper-daemon.sh ; ~/.config/hypr/wallpaper-daemon.sh &"
         "$mainMod, B, exec, brave"
+        # Hardware Graphics Driver / Monitor Reset (Mimics Windows Ctrl+Shift+Win+B)
+        "$mainMod CTRL SHIFT, B, exec, sh -c 'hyprctl dispatch dpms off && sleep 1 && hyprctl dispatch dpms on'"
         "$mainMod, S, exec, spotify"
         "$mainMod SHIFT, Space, togglefloating, "
         "$mainMod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
