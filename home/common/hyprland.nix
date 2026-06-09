@@ -65,13 +65,13 @@
       # MULTI-PROFILE MONITOR CONFIGURATION
       # -----------------------------------------------------
       # Laptop screen (Bottom Left)
-      monitor=desc:AU Optronics 0x633D,1920x1080@60,0x1440,1
+      monitor=desc:AU Optronics 0x633D,preferred,0x1440,1
       
       # WORK DESK: Top External Monitor (Samsung) (Top Right)
-      monitor=desc:Samsung Electric Company C34H89x HCPR501463,3440x1440@60,1920x0,1
+      monitor=desc:Samsung Electric Company C34H89x HCPR501463,highres,1920x0,1
       
       # WORK DESK: Bottom External Monitor (Sceptre) (Bottom Right)
-      monitor=desc:Sceptre Tech Inc Sceptre B34 0000000000000,2560x1080@60,1920x1440,1
+      monitor=desc:Sceptre Tech Inc Sceptre B34 0000000000000,highres,1920x1440,1
       
       # HOME DESK / ANY OTHER: Fallback rule automatically places new monitors to the right
       monitor=,preferred,auto,1
