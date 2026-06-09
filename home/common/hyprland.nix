@@ -68,7 +68,7 @@
       monitor=desc:AU Optronics 0x633D,1920x1080@60.05,0x1080,1
       
       # WORK DESK: Top External Monitor (Samsung) (Top Right)
-      monitor=desc:Samsung Electric Company C34H89x HCPR501463,1920x1080@60.00,1920x0,1
+      monitor=desc:Samsung Electric Company C34H89x HCPR501463,2560x1080@60.00,1920x0,1
       
       # WORK DESK: Bottom External Monitor (Sceptre) (Bottom Right)
       monitor=desc:Sceptre Tech Inc Sceptre B34 0000000000000,2560x1080@60.01,1920x1080,1
