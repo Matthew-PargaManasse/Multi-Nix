@@ -38,7 +38,7 @@
     grim
     slurp
     wl-clipboard
-    swappy
+    satty
 
     # QoL Tools
     cliphist
@@ -215,8 +215,8 @@
         "$mainMod SHIFT, 0, movetoworkspace, 10"
 
         # Screenshot bindings (Full screen vs Region)
-        ", Print, exec, grim - | swappy -f -"
-        "$mainMod, Print, exec, sh -c 'grim -g \"$(slurp)\" - | swappy -f -'"
+        ", Print, exec, grim - | satty --filename -"
+        "$mainMod, Print, exec, sh -c 'grim -g \"$(slurp)\" - | satty --filename -'"
       ];
 
       bindel = [
