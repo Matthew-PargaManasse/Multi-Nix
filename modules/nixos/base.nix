@@ -28,6 +28,15 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # Enable Fcitx5 as the Input Method Editor (IME)
+  # This is REQUIRED for Sunshine/Moonlight to inject Unicode characters (like @ from a mobile keyboard)
+  # over Wayland. Without it, Sunshine types literal ASCII (e.g. u40).
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.waylandFrontend = true;
+  };
+
   # Enable ZSH
   programs.zsh.enable = true;
   # Install firefox.
