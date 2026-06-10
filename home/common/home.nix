@@ -60,6 +60,12 @@
     gnome-tweaks
     gparted
     libsForQt5.qt5ct
+
+    # Basic Desktop Utilities
+    gnome-text-editor
+    gnome-calculator
+    evince
+    file-roller
   ];
 
   xdg.desktopEntries.antigravity = {
