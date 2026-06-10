@@ -41,7 +41,7 @@
     satty
 
     # Media viewers
-    imv
+    loupe
     mpv
 
     # QoL Tools
