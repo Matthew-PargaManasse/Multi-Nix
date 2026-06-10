@@ -47,7 +47,7 @@
     # QoL Tools
     cliphist
     polkit_gnome
-    xorg.xhost
+    xhost
   ];
 
 
