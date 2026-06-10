@@ -78,7 +78,7 @@
 
     # Utilities
     gparted
-    kdePackages.dolphin
+    nautilus
     (pkgs.callPackage ../pkgs/antigravity/default.nix {})
     (pkgs.callPackage ../pkgs/antigravity-ide/default.nix {})
 

@@ -23,6 +23,8 @@
 
     # Desktop Apps
     gimp
-    kdePackages.dolphin
+    # Utilities
+    gparted
+    nautilus
   ];
 }

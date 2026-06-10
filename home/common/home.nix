@@ -25,7 +25,7 @@
     ventoy-bin
     brave
     burpsuite
-    kdePackages.dolphin
+    nautilus
     element-desktop
     eza
     flameshot
