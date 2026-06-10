@@ -122,6 +122,7 @@
 
     .navigation-sidebar, .sidebar, placessidebar {
         background-color: rgba({{background | rgb}}, 0.85);
+        color: {{foreground}};
     }
   '';
 
