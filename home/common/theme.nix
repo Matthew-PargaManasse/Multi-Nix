@@ -27,6 +27,10 @@
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
     };
+
+    gtk4.extraCss = ''
+      @import url("file:///home/mitch/.config/wallust/gtk-colors.css");
+    '';
     
     gtk4.theme = config.gtk.theme;
 

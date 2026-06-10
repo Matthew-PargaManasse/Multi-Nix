@@ -28,7 +28,7 @@
 
     [templates.gtk4]
     template = "gtk4.css"
-    target = "~/.config/gtk-4.0/gtk.css"
+    target = "~/.config/wallust/gtk-colors.css"
   '';
 
   home.file.".config/wallust/templates/waybar.css".text = ''
