@@ -25,6 +25,10 @@
     [templates.rofi]
     template = "rofi.rasi"
     target = "~/.config/wallust/rofi-colors.rasi"
+
+    [templates.gtk4]
+    template = "gtk4.css"
+    target = "~/.config/gtk-4.0/gtk.css"
   '';
 
   home.file.".config/wallust/templates/waybar.css".text = ''
@@ -81,6 +85,35 @@
         selected:                    {{color4}};
         active:                      {{color2}};
         urgent:                      {{color1}};
+    }
+  '';
+
+  home.file.".config/wallust/templates/gtk4.css".text = ''
+    @define-color window_bg_color rgba({{background | rgb}}, 0.85);
+    @define-color view_bg_color rgba({{background | rgb}}, 0.75);
+    @define-color headerbar_bg_color rgba({{background | rgb}}, 0.9);
+    @define-color headerbar_backdrop_color rgba({{background | rgb}}, 0.9);
+    @define-color card_bg_color rgba({{color0 | rgb}}, 0.8);
+    @define-color card_shade_color rgba({{color0 | rgb}}, 0.5);
+    @define-color popover_bg_color rgba({{background | rgb}}, 0.95);
+    @define-color accent_color {{color4}};
+    @define-color accent_bg_color {{color4}};
+    @define-color accent_fg_color {{background}};
+    @define-color destructive_color {{color1}};
+    @define-color destructive_bg_color {{color1}};
+    @define-color destructive_fg_color {{background}};
+    @define-color success_color {{color2}};
+    @define-color success_bg_color {{color2}};
+    @define-color success_fg_color {{background}};
+    @define-color warning_color {{color3}};
+    @define-color warning_bg_color {{color3}};
+    @define-color warning_fg_color {{background}};
+    @define-color error_color {{color1}};
+    @define-color error_bg_color {{color1}};
+    @define-color error_fg_color {{background}};
+
+    window {
+        background-color: @window_bg_color;
     }
   '';
 

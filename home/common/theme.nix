@@ -31,8 +31,8 @@
     gtk4.theme = config.gtk.theme;
 
     iconTheme = {
-      name = "Tokyonight-Dark";
-      package = pkgs.tokyonight-gtk-theme;
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
     };
     
     cursorTheme = {
