@@ -40,9 +40,14 @@
     wl-clipboard
     satty
 
+    # Media viewers
+    imv
+    mpv
+
     # QoL Tools
     cliphist
     polkit_gnome
+    xorg.xhost
   ];
 
 
@@ -88,6 +93,7 @@
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+        "xhost +local:"
         "swaync"
         "nm-applet --indicator"
       ];
