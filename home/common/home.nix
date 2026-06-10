@@ -86,6 +86,24 @@
     icon = "code";
   };
 
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "image/jpeg" = [ "imv.desktop" ];
+      "image/png" = [ "imv.desktop" ];
+      "image/gif" = [ "imv.desktop" ];
+      "image/webp" = [ "imv.desktop" ];
+      "image/svg+xml" = [ "imv.desktop" ];
+      "video/mp4" = [ "mpv.desktop" ];
+      "video/x-matroska" = [ "mpv.desktop" ];
+      "video/webm" = [ "mpv.desktop" ];
+      "video/quicktime" = [ "mpv.desktop" ];
+      "text/plain" = [ "org.gnome.TextEditor.desktop" ];
+      "text/markdown" = [ "org.gnome.TextEditor.desktop" ];
+      "application/pdf" = [ "org.gnome.Evince.desktop" ];
+    };
+  };
+
   home.file = {};
 
   home.sessionVariables = {
