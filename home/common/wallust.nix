@@ -89,10 +89,10 @@
   '';
 
   home.file.".config/wallust/templates/gtk4.css".text = ''
-    @define-color window_bg_color rgba({{background | rgb}}, 0.85);
-    @define-color view_bg_color rgba({{background | rgb}}, 0.75);
-    @define-color headerbar_bg_color rgba({{background | rgb}}, 0.9);
-    @define-color headerbar_backdrop_color rgba({{background | rgb}}, 0.9);
+    @define-color window_bg_color rgba({{background | rgb}}, 0.6);
+    @define-color view_bg_color rgba({{background | rgb}}, 0.5);
+    @define-color headerbar_bg_color rgba({{background | rgb}}, 0.75);
+    @define-color headerbar_backdrop_color rgba({{background | rgb}}, 0.75);
     @define-color card_bg_color rgba({{color0 | rgb}}, 0.8);
     @define-color card_shade_color rgba({{color0 | rgb}}, 0.5);
     @define-color popover_bg_color rgba({{background | rgb}}, 0.95);

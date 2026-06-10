@@ -30,6 +30,7 @@
   services.upower.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
+  programs.dconf.enable = true;
 
   # Sunshine GameStream (Remote Desktop over Tailscale)
   services.sunshine = {
