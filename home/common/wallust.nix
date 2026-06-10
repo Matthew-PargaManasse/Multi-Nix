@@ -119,6 +119,10 @@
     window {
         background-color: @window_bg_color;
     }
+
+    .navigation-sidebar, .sidebar, placessidebar {
+        background-color: rgba({{background | rgb}}, 0.85);
+    }
   '';
 
   home.file.".config/rofi/config.rasi".text = ''
