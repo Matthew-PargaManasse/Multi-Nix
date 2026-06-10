@@ -35,6 +35,14 @@
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config = {
+      common = {
+        default = [ "gtk" ];
+      };
+      hyprland = {
+        default = [ "gtk" "hyprland" ];
+      };
+    };
   };
 
   # Sunshine GameStream (Remote Desktop over Tailscale)
