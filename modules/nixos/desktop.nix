@@ -32,6 +32,11 @@
   services.udisks2.enable = true;
   programs.dconf.enable = true;
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
   # Sunshine GameStream (Remote Desktop over Tailscale)
   services.sunshine = {
     enable = true;
