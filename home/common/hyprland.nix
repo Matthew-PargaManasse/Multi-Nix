@@ -320,7 +320,7 @@
         spacing = 4;
         modules-left = ["custom/launcher" "hyprland/workspaces" "custom/power"];
         modules-center = ["cpu" "memory" "battery" "network#traffic"];
-        modules-right = ["wlr/taskbar" "tray" "mpris" "network" "clock"];
+        modules-right = ["wlr/taskbar" "tray" "mpris" "network" "pulseaudio" "clock"];
 
         "hyprland/window" = {
           format = "👉 {}";
@@ -385,6 +385,24 @@
         "network#traffic" = {
           format = "⬆️ {bandwidthUpBytes} ⬇️ {bandwidthDownBytes}";
           interval = 1;
+        };
+
+        pulseaudio = {
+          format = "{icon}  {volume}%";
+          format-bluetooth = "{icon}  {volume}%";
+          format-muted = "  Muted";
+          format-icons = {
+            headphone = "";
+            hands-free = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = ["" ""];
+          };
+          scroll-step = 5;
+          on-click = "pavucontrol";
+          on-click-right = "pavucontrol";
         };
 
         mpris = {
