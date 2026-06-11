@@ -52,6 +52,8 @@
   services.dbus.implementation = "broker";
   services.hardware.bolt.enable = true; # Required for Thunderbolt Docks (like Dell Docks)
   hardware.keyboard.qmk.enable = true; # Required for custom mechanical keyboards (e.g. Hillside)
+  hardware.logitech.wireless.enable = true; # Required for Logitech MX Ergo and Solaar
+  hardware.logitech.wireless.enableGraphical = true; # Adds Solaar GUI
 
 
   # Enable flakes
