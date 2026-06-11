@@ -320,7 +320,7 @@
         spacing = 4;
         modules-left = ["custom/launcher" "hyprland/workspaces" "custom/power"];
         modules-center = ["cpu" "memory" "battery" "network#traffic"];
-        modules-right = ["wlr/taskbar" "tray" "mpris" "network" "pulseaudio" "clock"];
+        modules-right = ["wlr/taskbar" "tray" "custom/mpris" "network" "pulseaudio" "clock"];
 
         "hyprland/window" = {
           format = "👉 {}";
@@ -405,11 +405,13 @@
           on-click-right = "pavucontrol";
         };
 
-        mpris = {
-          format = "{player_icon} {dynamic}";
-          format-paused = "{status_icon} {dynamic}";
-          player-icons = {default = "🎵";};
-          status-icons = {paused = "⏸";};
+        "custom/mpris" = {
+          format = "🎵 {}";
+          exec = "zscroll -l 30 -d 0.2 -M \"playerctl status 2>/dev/null\" -m \"Playing\" \"-s 1\" -m \"Paused\" \"-s 0\" -u true \"playerctl metadata --format '{{ title }} - {{ artist }}' 2>/dev/null\" 2>/dev/null";
+          on-click = "playerctl play-pause";
+          on-scroll-up = "playerctl next";
+          on-scroll-down = "playerctl previous";
+          restart-interval = 2;
         };
 
         clock = {

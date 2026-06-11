@@ -116,6 +116,8 @@
     procs # replaces ps
     tealdeer # fast tldr client
     zellij # replaces tmux
+    zscroll # waybar mpris scrolling
+    playerctl # waybar mpris media control
 
     # Hardware & Peripherals
     headsetcontrol
