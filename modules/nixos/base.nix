@@ -116,7 +116,13 @@
     procs # replaces ps
     tealdeer # fast tldr client
     zellij # replaces tmux
+
+    # Hardware & Peripherals
+    headsetcontrol
   ];
+
+  # Hardware udev rules
+  services.udev.packages = [ pkgs.headsetcontrol ];
 
   environment.variables.EDITOR = "nvim";
 
