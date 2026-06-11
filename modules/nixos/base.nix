@@ -119,6 +119,7 @@
 
     # Hardware & Peripherals
     headsetcontrol
+    pavucontrol # Audio volume and device mixer
   ];
 
   # Hardware udev rules
